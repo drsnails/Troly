@@ -1,9 +1,11 @@
 import React from 'react'
+import { RouteTimeLine } from './RouteTimeLine'
 
-export function TripRoute() {
+export function TripRoute({trip}) {
     return (
         <div>
-            TripRoute
+            {/* {trip.destinations[0].name} */}
+            <RouteTimeLine trip={trip}/>
         </div>
     )
 }

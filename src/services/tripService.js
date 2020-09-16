@@ -34,9 +34,15 @@ const trips = [{
     destinations: [{
         id: 'ksndv8',
         name: 'Taipei',
-        startDate: 43635868,
-        endDate: 735938669
-    }],
+        startDate: Date.now()+(1000*60*60*24*3),
+        endDate: Date.now()+(1000*60*60*24*8)
+    },{
+        id: 'ksndv9',
+        name: 'Beijing',
+        startDate: Date.now()+(1000*60*60*24*8),
+        endDate: Date.now()+(1000*60*60*24*14)
+    }
+],
 
     activities: [{
         id: 'KHKHHL776',
