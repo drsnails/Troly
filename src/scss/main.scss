@@ -1,1 +1,26 @@
-@import './components/tripAssembly.scss'
+//setup
+@import "setup/vars.scss";
+@import "setup/functions.scss";
+@import "setup/mixins.scss";
+@import "setup/typography.scss";
+
+//basics
+@import "basics/helpers.scss";
+@import "basics/layouts.scss";
+@import "basics/links.scss";
+@import "basics/base.scss";
+@import "basics/buttons.scss";
+
+//component
+@import './components/tripAssembly.scss';
+
+
+
+//views
+@import "./views/home-page.scss";
+
+
+
+
+
+           

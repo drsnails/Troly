@@ -13,7 +13,7 @@ class _MainNavBar extends Component {
 
     render() {
         return (
-            <div>
+            <div className="flex justify-between container">
                 <Link  to="/" > <h2 className="logo">Trolly</h2></Link>
                 <div>
                     <NavLink to="/about" >About</NavLink>
