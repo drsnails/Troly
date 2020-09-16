@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { Switch, Route } from 'react-router-dom';
-import { MainNavBar } from './cmps/MainNavBar';
+import { MainNavBar } from './cmps/MainCmps/MainNavBar';
 import { About } from './pages/About';
 import { HomePage } from './pages/HomePage';
 import { LoginSignupPage } from './pages/LoginSignupPage';
-import { TripApp } from './pages/TripApp'
+import { TripApp } from './pages/TripApp.jsx'
 import { UserTrips } from './pages/UserTrips';
 
 export function App() {

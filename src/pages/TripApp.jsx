@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Route, Router, Switch, withRouter } from 'react-router-dom'
 import { loadTrip } from '../store/actions/tripActions'
-import { TripAssembly } from '../cmps/TripAssembly'
-import { TripRoute } from '../cmps/TripRoute'
-import { tripService } from '.././services/tripService'
-import { TripNavBar } from '../cmps/TripNavBar'
+import { TripAssembly } from '../cmps/TripAssembly/TripAssembly'
+import { TripRoute } from '../cmps/TripRoute/TripRoute'
+// import { tripService } from '.././services/tripService'
+import { TripNavBar } from '../cmps/TripApp/TripNavBar'
 
 class _TripApp extends Component {
 
