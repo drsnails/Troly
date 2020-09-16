@@ -22,93 +22,186 @@ const user = {
 }
 
 
-const trips = [{
-    _id: '438577i4h48fu049f',
-    members: [{
-        _id: 'u101',
-        fullName: 'Orly Amdadi',
-        imgUrl: 'http://jbdcsdcj'
-    }],
-    createdBy: 'jbkjg876iug865gl',
-    imgUrl: 'http//vkjbfcd.jpg',
-    destinations: [{
-        id: 'ksndv8',
-        name: 'Taipei',
-        startDate: 43635868,
-        endDate: 735938669
-    }],
+const trips = [
+    {
+        _id: '438577i4h48fu049f',
+        members: [{
+            _id: 'u101',
+            fullName: 'Orly Amdadi',
+            imgUrl: 'http://jbdcsdcj'
+        }],
+        createdBy: 'jbkjg876iug865gl',
+        imgUrl: 'http//vkjbfcd.jpg',
+        destinations: [
+            {
+                id: 'ksndv8',
+                name: 'Taipei',
+                startDate: 1600236000000,
+                endDate: 1600466400000
+            }],
 
-    activities: [{
-        id: 'KHKHHL776',
-        destination: 'Taipei',
-        at: 875848759,
-        duration: 2,
-        name: 'beach',
-        notes: ['towel', 'sun screen', 'water', 'beer'],
-        location: { lat: 3224.234234, lng: 43534 },
-        imgUrl: 'http//scac.vodvm.sda',
-        price: { amount: 20, currency: '$' },
-        labels: ['relax']
-    }]
-},
-{
-    _id: '98307667jkedbfj',
-    members: [{
-        _id: 'u101',
-        fullName: 'Orly Amdadi',
-        imgUrl: 'http://jbdcsdcj'
-    }],
-    createdBy: 'jbkjg876iug865gl',
-    imgUrl: 'http//vkjbfcd.jpg',
-    destinations: [{
-        id: 'ksndv8',
-        name: 'Taipei',
-        startDate: 43635868,
-        endDate: 735938669
-    }],
+        activities: [
+            {
+                id: 'KHKHHL776',
+                destination: 'Taipei',
+                at: 875848759,
+                duration: 2,
+                name: 'beach',
+                notes: ['towel', 'sun screen', 'water', 'beer'],
+                location: { lat: 3224.234234, lng: 43534 },
+                imgUrl: 'http//scac.vodvm.sda',
+                price: { amount: 20, currency: '$' },
+                labels: ['relax']
+            }
+        ]
+    },
+    {
+        _id: '98307667jkedbfj',
+        members: [{
+            _id: 'u101',
+            fullName: 'Orly Amdadi',
+            imgUrl: 'http://jbdcsdcj'
+        }],
+        createdBy: 'jbkjg876iug865gl',
+        imgUrl: 'http//vkjbfcd.jpg',
+        destinations: [{
+            id: 'ksndv8',
+            name: 'Taipei',
+            startDate: 43635868,
+            endDate: 735938669
+        }],
 
-    activities: [{
-        id: 'KHKHHL776',
-        destination: 'Taipei',
-        at: 875848759,
-        duration: 2,
-        name: 'beach',
-        notes: ['towel', 'sun screen', 'water', 'beer'],
-        location: { lat: 3224.234234, lng: 43534 },
-        imgUrl: 'http//scac.vodvm.sda',
-        price: { amount: 20, currency: '$' },
-        labels: ['relax']
-    }]
-},
-{
-    _id: '986975845knldkvs',
-    members: [{
-        _id: 'u101',
-        fullName: 'Orly Amdadi',
-        imgUrl: 'http://jbdcsdcj'
-    }],
-    createdBy: 'jbkjg876iug865gl',
-    imgUrl: 'http//vkjbfcd.jpg',
-    destinations: [{
-        id: 'ksndv8',
-        name: 'Taipei',
-        startDate: 43635868,
-        endDate: 735938669
-    }],
+        activities: [{
+            id: 'KHKHHL776',
+            destination: 'Taipei',
+            at: 875848759,
+            duration: 2,
+            name: 'beach',
+            notes: ['towel', 'sun screen', 'water', 'beer'],
+            location: { lat: 3224.234234, lng: 43534 },
+            imgUrl: 'http//scac.vodvm.sda',
+            price: { amount: 20, currency: '$' },
+            labels: ['relax']
+        }]
+    },
+    {
+        _id: '986975845knldkvs',
+        members: [{
+            _id: 'u101',
+            fullName: 'Orly Amdadi',
+            imgUrl: 'http://jbdcsdcj'
+        }],
+        createdBy: 'jbkjg876iug865gl',
+        imgUrl: 'http//vkjbfcd.jpg',
+        destinations: [{
+            id: 'ksndv8',
+            name: 'Taipei',
+            startDate: 43635868,
+            endDate: 735938669
+        }],
 
-    activities: [{
-        id: 'KHKHHL776',
-        destination: 'Taipei',
-        at: 875848759,
-        duration: 2,
-        name: 'beach',
-        notes: ['towel', 'sun screen', 'water', 'beer'],
-        location: { lat: 3224.234234, lng: 43534 },
-        imgUrl: 'http//scac.vodvm.sda',
-        price: { amount: 20, currency: '$' },
-        labels: ['relax']
+        activities: [{
+            id: 'KHKHHL776',
+            destination: 'Taipei',
+            at: 875848759,
+            duration: 2,
+            name: 'beach',
+            notes: ['towel', 'sun screen', 'water', 'beer'],
+            location: { lat: 3224.234234, lng: 43534 },
+            imgUrl: 'http//scac.vodvm.sda',
+            price: { amount: 20, currency: '$' },
+            labels: ['relax']
+        }]
     }]
-}]
+
+
+// const trips = [{
+//     _id: '438577i4h48fu049f',
+//     members: [{
+//         _id: 'u101',
+//         fullName: 'Orly Amdadi',
+//         imgUrl: 'http://jbdcsdcj'
+//     }],
+//     createdBy: 'jbkjg876iug865gl',
+//     imgUrl: 'http//vkjbfcd.jpg',
+//     destinations: [{
+//         id: 'ksndv8',
+//         name: 'Taipei',
+//         startDate: 43635868,
+//         endDate: 735938669
+//     }],
+
+//     activities: [{
+//         id: 'KHKHHL776',
+//         destination: 'Taipei',
+//         at: 875848759,
+//         duration: 2,
+//         name: 'beach',
+//         notes: ['towel', 'sun screen', 'water', 'beer'],
+//         location: { lat: 3224.234234, lng: 43534 },
+//         imgUrl: 'http//scac.vodvm.sda',
+//         price: { amount: 20, currency: '$' },
+//         labels: ['relax']
+//     }]
+// },
+// {
+//     _id: '98307667jkedbfj',
+//     members: [{
+//         _id: 'u101',
+//         fullName: 'Orly Amdadi',
+//         imgUrl: 'http://jbdcsdcj'
+//     }],
+//     createdBy: 'jbkjg876iug865gl',
+//     imgUrl: 'http//vkjbfcd.jpg',
+//     destinations: [{
+//         id: 'ksndv8',
+//         name: 'Taipei',
+//         startDate: 43635868,
+//         endDate: 735938669
+//     }],
+
+//     activities: [{
+//         id: 'KHKHHL776',
+//         destination: 'Taipei',
+//         at: 875848759,
+//         duration: 2,
+//         name: 'beach',
+//         notes: ['towel', 'sun screen', 'water', 'beer'],
+//         location: { lat: 3224.234234, lng: 43534 },
+//         imgUrl: 'http//scac.vodvm.sda',
+//         price: { amount: 20, currency: '$' },
+//         labels: ['relax']
+//     }]
+// },
+// {
+//     _id: '986975845knldkvs',
+//     members: [{
+//         _id: 'u101',
+//         fullName: 'Orly Amdadi',
+//         imgUrl: 'http://jbdcsdcj'
+//     }],
+//     createdBy: 'jbkjg876iug865gl',
+//     imgUrl: 'http//vkjbfcd.jpg',
+//     destinations: [{
+//         id: 'ksndv8',
+//         name: 'Taipei',
+//         startDate: 43635868,
+//         endDate: 735938669
+//     }],
+
+//     activities: [{
+//         id: 'KHKHHL776',
+//         destination: 'Taipei',
+//         at: 875848759,
+//         duration: 2,
+//         name: 'beach',
+//         notes: ['towel', 'sun screen', 'water', 'beer'],
+//         location: { lat: 3224.234234, lng: 43534 },
+//         imgUrl: 'http//scac.vodvm.sda',
+//         price: { amount: 20, currency: '$' },
+//         labels: ['relax']
+//     }]
+// }]
 
 
 function query(filterBy) {
