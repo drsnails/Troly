@@ -7,6 +7,8 @@ import { HomePage } from './pages/HomePage';
 import { LoginSignupPage } from './pages/LoginSignupPage';
 import { TripApp } from './pages/TripApp.jsx'
 import { UserTrips } from './pages/UserTrips';
+import '../src/scss/main.scss'
+
 
 export function App() {
 
