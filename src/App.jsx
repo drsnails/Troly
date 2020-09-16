@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Switch, Route } from 'react-router-dom';
 import { MainNavBar } from './cmps/MainCmps/MainNavBar';
 import { About } from './pages/About';
