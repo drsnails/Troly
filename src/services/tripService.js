@@ -44,7 +44,7 @@ const trips = [
             {
                 id: 'KHKHHL776',
                 destination: 'Taipei',
-                at: 875848759,
+                at: 1600243200000,
                 duration: 2,
                 name: 'beach',
                 notes: ['towel', 'sun screen', 'water', 'beer'],
@@ -52,7 +52,19 @@ const trips = [
                 imgUrl: 'http//scac.vodvm.sda',
                 price: { amount: 20, currency: '$' },
                 labels: ['relax']
-            }
+            },
+            {
+                id: 'KHKHHL776',
+                destination: 'Taipei',
+                at: 1600257600000,
+                duration: 2,
+                name: 'beach',
+                notes: ['towel', 'sun screen', 'water', 'beer'],
+                location: { lat: 3224.234234, lng: 43534 },
+                imgUrl: 'http//scac.vodvm.sda',
+                price: { amount: 20, currency: '$' },
+                labels: ['relax']
+            },
         ]
     },
     {
