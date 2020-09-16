@@ -1,23 +1,49 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { loadTrips } from '../store/actions/tripActions'
-import { Assembly } from '../cmps/Assembly'
-import { Route } from '../cmps/Route'
-import { Router } from 'react-router'
+import { Route, Router, Switch, withRouter } from 'react-router-dom'
+import { loadTrip } from '../store/actions/tripActions'
+import { TripAssembly } from '../cmps/TripAssembly'
+import { TripRoute } from '../cmps/TripRoute'
+import { tripService } from '.././services/tripService'
+import { TripNavBar } from '../cmps/TripNavBar'
 
 class _TripApp extends Component {
 
-    componentDidMount() {
-        this.props.loadTrips()
+    state = {
+        trip: ''
     }
 
+    async componentDidMount() {
+        const { id } = this.props.match.params
+        try {
+
+            const trip = await this.props.loadTrip(id)
+            console.log(trip);
+            this.setState({ trip })
+        }
+        catch (err) {
+            console.log('tripApp could not find toy', err);
+        }
+    }
+
+
+
     render() {
-        if (!trips) return <div>Loading....</div>
+        const { trip } = this.state
+        if (!trip) return <div>Loading....</div>
         return (
             <div className="trip-app">
-                
-                TripApp
-            </div>
+                <TripNavBar tripId={trip._id} />
+                <Switch>
+                    <Route path="/trip/:id/triproute">
+                        <TripRoute trip={trip}></TripRoute>
+                    </Route>
+                    <Route path="/trip/:id/tripassembly">
+                        <TripAssembly trip={trip}></TripAssembly>
+                    </Route>
+                </Switch>
+                <p>{trip.destinations[0].name}</p>
+            </div >
         )
     }
 }
@@ -29,6 +55,6 @@ const mapStateToProps = state => {
     }
 }
 const mapDispatchToProps = {
-    loadTrips
+    loadTrip
 }
-export const TripApp = connect(mapStateToProps, mapDispatchToProps)(_TripApp)
+export const TripApp = connect(mapStateToProps, mapDispatchToProps)(withRouter(_TripApp))

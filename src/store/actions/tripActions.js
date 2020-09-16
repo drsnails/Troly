@@ -1,9 +1,12 @@
-import { tripService } from "../../services/TripService"
+import { tripService } from "../../services/tripService"
 
 
-export function loadTrips() {
+
+
+export function loadTrip(tripId) {
     return async dispatch => {
-        const trips = await tripService.query()
-        dispatch({ type: 'SET_TRIPS', trips })
+        const trip = await tripService.getById(tripId)
+        // dispatch()
+        return trip
     }
 }
