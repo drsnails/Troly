@@ -1,6 +1,22 @@
 .route-time-line{
+    padding: 20px;//remove
     .line{
-        border-left: 6px solid green;
+        border-left: 2px solid $clr12;
+        opacity: 0.5;
         height: 70px;
+        margin-inline-start: 13px;//may change
     }
+    .index-ball{
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        
+        
+    }
+    @for $i from 0 through 8 {
+        .route-time-line-context:nth-child(#{$i})>.index-ball {
+            background-color:  adjust-hue($clr1, $i*5deg )
+        }
+    }
+    
 }

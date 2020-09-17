@@ -2,7 +2,8 @@
 
 
 export const utils = {
-    makeId
+    makeId,
+    calculateDays
 }
 
 function makeId(length = 5) {
@@ -12,4 +13,12 @@ function makeId(length = 5) {
         txt += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return txt;
+}
+
+function calculateDays(start, end) {
+    end= new Date(end)
+    start= new Date(start)
+    var difference = end.getTime() - start.getTime();
+    var daysDifference = Math.floor(difference / 1000 / 60 / 60 / 24);
+    return daysDifference
 }
