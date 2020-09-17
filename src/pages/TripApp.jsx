@@ -30,8 +30,6 @@ class _TripApp extends Component {
         }
     }
 
-
-
     render() {
         const { trip } = this.state
         if (!trip) return <div>Loading....</div>

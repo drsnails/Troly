@@ -2,7 +2,9 @@
 
 
 export const utils = {
-    makeId
+    makeId,
+    createMat,
+    getDateDay
 }
 
 function makeId(length = 5) {
@@ -12,4 +14,21 @@ function makeId(length = 5) {
         txt += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return txt;
+}
+
+function createMat(cols, rows) {
+    const mat = []
+    for (let i = 0; i < rows; i++) {
+        mat[i] = []
+        for (let j = 0; j < cols; j++) {
+            mat[i][j] = {}
+        }
+    }
+
+    return mat
+}
+
+function getDateDay(timeStamp) {
+    const time = new Date(timeStamp);
+    return time.getDate()
 }
