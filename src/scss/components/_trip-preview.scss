@@ -1,0 +1,40 @@
+.trip-preview {
+    display: flex;
+    color: white;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: space-between;
+    list-style-type: none;
+    height: 300px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+
+
+    h5,h4{
+        margin: 0;
+        text-transform: capitalize;
+    }
+    p{
+        margin:0;
+        color:gray;
+        font-size:smaller
+    }
+
+    >img{
+        margin: 0 auto;
+        height: 172px;
+        position: relative;
+        width: 203px;
+        object-fit: cover;
+
+    }
+
+    @include for-mobile-layout {
+       border: none;
+           }
+       @include for-narrow-layout {
+        border: 1px solid rgb(226, 225, 225);
+
+       }
+
+}

@@ -11,3 +11,21 @@
         }
     }
 }
+
+.trip-list{
+    display: grid;
+    grid-gap: 5px;
+    align-items: flex-end;
+    grid-template-columns: repeat(auto-fit, 250px);
+
+    // @include for-mobile-layout {
+    //     display: block;
+    //         width: auto;
+    // }
+    // @include for-narrow-layout {
+    //     grid-template-columns: repeat(2, 200px);
+    // }
+    // @include for-normal-layout {
+    //     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    // }
+}

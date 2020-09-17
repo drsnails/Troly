@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
-import {tripReducer } from './reducers/TripReducer';
+import {tripReducer } from './reducers/tripReducer';
 import { userReducer } from './reducers/userReducer';
 
 

@@ -1,0 +1,45 @@
+.home-page{
+    h2{text-align: center;
+    margin: 0 auto 30px};
+
+.trips-pagination{
+    cursor: pointer;
+    position: absolute;
+   
+    font-size: 2rem;
+}
+.trips-pagination-forward{
+    right: 4%;
+    top: 85%;
+}
+
+.trips-pagination-backward{
+    left: 4%;
+    top:  85%;
+}
+}
+
+
+.home-page-hero{
+    height: 500px;
+    background: url('https://i.pinimg.com/originals/90/4d/c8/904dc81cae24a773a9d5e5b8a5f3df12.jpg');
+    object-fit: contain;
+    background-size: cover;
+    background-position-y: center;
+    margin-bottom: 30px;
+}
+
+.trip-list{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0;
+    justify-content: center;
+    padding: 0 30px 30px;
+    list-style-type: none;
+    grid-gap: 15px;
+    width: 100%;
+}
+
+.trips-container{
+    // padding: 40px 0;
+}

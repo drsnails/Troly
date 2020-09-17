@@ -13,9 +13,9 @@ class _MainNavBar extends Component {
 
     render() {
         return (
-            <div className="flex justify-between container">
-                <Link  to="/" > <h2 className="logo">Trolly</h2></Link>
-                <div>
+            <div className="main-navbar flex Justify-between align-center full">
+                <Link  to="/" > <h1 className="logo">Trolly</h1></Link>
+                <div className="flex Justify-between main-navbar-links">
                     <NavLink to="/about" >About</NavLink>
                     <NavLink to="/user/:id" >User</NavLink>
                     <NavLink to="/loginsignup" >Login</NavLink>
