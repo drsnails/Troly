@@ -98,10 +98,9 @@ export class TripAssembly extends Component {
         return slot
     }
 
-    
     getCol = (mat, col) => {
-        const MatColumn = (arr, n) => arr.map(x => x[n]);
-        return MatColumn(mat, col);
+        const arrayColumn = (arr, n) => arr.map(x => x[n]);
+        return arrayColumn(mat, col);
     }
 
     render() {
@@ -114,7 +113,7 @@ export class TripAssembly extends Component {
                     destinations
                 </div>
                 <div className={'trip-assembly-main'}>
-                    {this.renderActPreviews(daysMat)}
+                    {/* {this.renderActPreviews(daysMat)} */}
                 </div >
             </React.Fragment>
         )

@@ -24,6 +24,7 @@ function calculateDays(start, end) {
     var daysDifference = Math.floor(difference / 1000 / 60 / 60 / 24);
     return daysDifference
 }
+
 function createMat(cols, rows) {
     const mat = []
     for (let i = 0; i < rows; i++) {

@@ -7,9 +7,8 @@ export function DayPreview({ day }) {
             {/* console.log(day); */}
             {day.map((act) => {
                 console.log("DayPreview -> act", act)
-                return <div > {act.id} asdsak</div>
+                return <div > s</div>
             })}
         </div>
     )
 }
-
