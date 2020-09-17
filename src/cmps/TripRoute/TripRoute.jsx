@@ -6,7 +6,7 @@ export function TripRoute({trip}) {
     return (
         <div className="flex">
             <RouteTimeLine trip={trip}/>
-            {/* <RouteCalendar trip={trip}/> */}
+            <RouteCalendar trip={trip}/>
         </div>
     )
 }
