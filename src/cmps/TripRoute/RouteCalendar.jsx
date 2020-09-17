@@ -30,6 +30,7 @@ export function RouteCalendar({ trip }) {
     }
     function getLastSaturday(date, calendarData) {
         let currDay = new Date(date)
+        console.log(currDay, 'lastS');
         while (currDay.getDay() < 6) {
             currDay = new Date(currDay.getTime() + (1000 * 60 * 60 * 24))
             calendarData.push({day:currDay.getDate(),ts:currDay})
@@ -45,8 +46,7 @@ export function RouteCalendar({ trip }) {
         return calendarData
     }
 
-    const calendarData = generateCalendar(trip)
-
+    
     function renderTable(data){
         const weekCmps=[]
         let weeksCount = calendarData.length / 7;
@@ -55,8 +55,9 @@ export function RouteCalendar({ trip }) {
             weeksCount--
         }
         return weekCmps
-
+        
     }
+    const calendarData = generateCalendar(trip)
     return (
         <table>
             <tbody>

@@ -22,7 +22,6 @@ class _TripApp extends Component {
         try {
 
             const trip = await this.props.loadTrip(id)
-            console.log(trip);
             this.setState({ trip })
         }
         catch (err) {
