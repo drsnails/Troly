@@ -40,8 +40,6 @@ const trips = [
             }],
 
         activities: [
-            
-           
 
             {
                 id: 'KHKHHL776',

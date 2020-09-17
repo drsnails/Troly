@@ -65,12 +65,12 @@ export class TripAssembly extends Component {
     renderActPreviews(mat) {
         const actPreviews = []
 
-        for (let i = 0; i < mat[0].length; i++) {
+        for (let i = 0; i < mat.length; i++) {
+            console.log("TripAssembly -> renderActPreviews -> i", i)
             // this.getCol(mat, i)}
-            console.log("TripAssembly -> renderActPreviews -> this.getCol(mat, i)}", this.getCol(mat, i))
             var col = this.getCol(mat, i)
-            console.log("TripAssembly -> col", col)
-            actPreviews.push(<DayPreview day={this.getCol(mat, i)}/>
+            console.log("TripAssembly -> renderActPreviews -> col", col)
+            actPreviews.push(<DayPreview key={utils.makeId()} day={col} />
             )
 
         }
@@ -113,7 +113,7 @@ export class TripAssembly extends Component {
                     destinations
                 </div>
                 <div className={'trip-assembly-main'}>
-                    {/* {this.renderActPreviews(daysMat)} */}
+                    {acts}
                 </div >
             </React.Fragment>
         )

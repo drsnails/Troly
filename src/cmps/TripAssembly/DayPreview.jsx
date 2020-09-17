@@ -1,13 +1,12 @@
 import React from 'react'
-
+import { utils } from '../../services/utils'
 export function DayPreview({ day }) {
     var c = 0
     return (
         <div className="day-preview-assembly">
-            {/* console.log(day); */}
+
             {day.map((act) => {
-                console.log("DayPreview -> act", act)
-                return <div > s</div>
+                return <div key={utils.makeId()}></div>
             })}
         </div>
     )
