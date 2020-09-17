@@ -1,4 +1,28 @@
 
 .trip-assembly-main {
     // background-color: greenyellow;
+    max-width: 90vw;
+    // max-height: 90vh;
+    background-color: hotpink;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    // grid-template-rows: repeat(35, minmax(30px, 1fr));
+
+    .day-preview-assembly{
+        // height: 85vh;
+        display: grid;
+        background-color: rgb(70, 31, 209);
+        grid-template-rows: repeat(35, minmax(30px, 1fr));
+    }
+
+    
+}
+
+.destinations-header {
+    margin: 0 auto;
+    max-width: 90vw;
+    background-color: rgb(97, 175, 248);
+    height: 1.6rem;
+    text-align: center;
 }

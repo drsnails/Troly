@@ -3,7 +3,9 @@
 
 export const utils = {
     makeId,
-    calculateDays
+    calculateDays,
+    createMat,
+    getDateDay
 }
 
 function makeId(length = 5) {
@@ -21,4 +23,20 @@ function calculateDays(start, end) {
     var difference = end.getTime() - start.getTime();
     var daysDifference = Math.floor(difference / 1000 / 60 / 60 / 24);
     return daysDifference
+}
+function createMat(cols, rows) {
+    const mat = []
+    for (let i = 0; i < rows; i++) {
+        mat[i] = []
+        for (let j = 0; j < cols; j++) {
+            mat[i][j] = {}
+        }
+    }
+
+    return mat
+}
+
+function getDateDay(timeStamp) {
+    const time = new Date(timeStamp);
+    return time.getDate()
 }
