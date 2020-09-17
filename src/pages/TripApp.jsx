@@ -22,15 +22,12 @@ class _TripApp extends Component {
         try {
 
             const trip = await this.props.loadTrip(id)
-            console.log(trip);
             this.setState({ trip })
         }
         catch (err) {
             console.log('tripApp could not find toy', err);
         }
     }
-
-
 
     render() {
         const { trip } = this.state

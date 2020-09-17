@@ -24,6 +24,11 @@
     }
 }
 
+@mixin ball-color($number) {
+    background-color: $clr+$number;
+    
+}
+
 /* Media  Mixins */
 @mixin aspect-ratio($width, $height) {
     position: relative;
