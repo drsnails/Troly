@@ -30,7 +30,8 @@ function post(entityType, newEntity) {
 }
 
 function postAll(entityType,newEntity){
-    return _save(entityType, newEntity)
+    _save(entityType, newEntity)
+    return newEntity
 }
 
 
@@ -56,7 +57,7 @@ function remove(entityType, entityId) {
 
 
 function _save(entityType, entities) {
-    localStorage.setItem(entityType, JSON.stringify(entities))
+    return localStorage.setItem(entityType, JSON.stringify(entities))
 }
 
 function _makeId(length = 5) {

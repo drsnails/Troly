@@ -13,6 +13,7 @@ class _HomePage extends Component {
 
     async componentDidMount() {
         const trips = await this.props.loadTrips()
+    
         
     }
 
@@ -23,7 +24,7 @@ class _HomePage extends Component {
 
     render() {
         // const {trips} =this.state
-        // if (!trips) return <p>Loading Trips . . .</p>
+        if (!this.props.trips) return <p>Loading Trips . . .</p>
         return (
 
             <div className="home-page ">
