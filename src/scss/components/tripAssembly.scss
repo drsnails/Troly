@@ -23,10 +23,11 @@
         }
         .activitie-assembly {
             background-color: red;
-            cursor: pointer;
+            // cursor: pointer;
         }
         .literal-day {
             background-color: blueviolet;
+            cursor: not-allowed !important;
         }
     }
 }
