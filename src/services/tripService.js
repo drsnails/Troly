@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { storageService } from './asyncStorageService'
 import { utils } from './utils'
 const BASE_URL = 'http://localhost:3001/trip'
 
@@ -36,7 +37,11 @@ const trips = [
                 id: 'ksndv8',
                 name: 'Taipei',
                 startDate: 1600236000000,
-                endDate: 1600466400000
+                endDate: 1600466400000,
+                location: {
+                    lat: 25.04776,
+                    lng: 121.53185
+                }
             }],
 
         activities: [
@@ -187,9 +192,25 @@ const trips = [
         destinations: [{
             id: 'ksndv8',
             name: 'Taipei',
-            startDate: 43635868,
-            endDate: 735938669
-        }],
+            startDate: Date.now() + (1000 * 60 * 60 * 24 * 5),
+            endDate: Date.now() + (1000 * 60 * 60 * 24 * 10),
+            location: {
+                lat: 25.04776,
+                lng: 121.53185
+            }
+        },
+        {
+            id: 'ks55ji',
+            name: 'China',
+            startDate: Date.now() + (1000 * 60 * 60 * 24 * 10),
+            endDate: Date.now() + (1000 * 60 * 60 * 24 * 18),
+            location: {
+                lat: 22.3193,
+                lng: 114.1694
+            }
+        }
+        ],
+
 
         activities: [{
             id: 'KHKHHL776',
@@ -239,38 +260,41 @@ const trips = [
 
 
 
-function query(filterBy) {
+async function query(filterBy) {
     // const queryParams
     // return httpService.get('trip', filterBy)
 
     // const queryStr = `?search=${filterBy.search}&minPrice=${filterBy.minPrice}&maxPrice=${filterBy.maxPrice}&type=${filterBy.type}&inStock=${filterBy.inStock}
     // `;
     // return httpService.get(`trip${queryStr}`);
-    return Promise.resolve(trips)
+    let tripsToReturn =  await storageService.query('trips')
+    if (!tripsToReturn.length) {
+        tripsToReturn = storageService.postAll('trips', trips)
+    }
+    return Promise.resolve(tripsToReturn)
 }
 
 
-function getById(tripId) {
-    return Promise.resolve(trips.find(trip => trip._id === tripId))
+async function getById(tripId) {
+    const trip = await storageService.getById('trips',tripId)
+    return Promise.resolve(trip)
     // return httpService.get(`trip/${tripId}`)
 
 }
 
 function remove(tripId) {
-    const tripIdx = trips.findIndex(trip => trip._id === tripId)
-    return Promise.resolve(trips.splice(tripIdx, 1))
+    return storageService.remove('trips',tripId)
     // return httpService.delete(`trip/${tripId}`)
 }
 
 function save(trip) {
     if (trip._id) {
-        const tripIdx = trips.findIndex(trip => trip === trip)
-        trips[tripIdx] = trip
+        return storageService.put('trips',trip)
         // return httpService.put(`trip/${trip._id}`, trip)
 
     } else {
         trip._id = utils.makeId()
-        trips.push(trip)
+        return storageService.post('trips',trip)
         // return httpService.post('trip', trip)
     }
 }
