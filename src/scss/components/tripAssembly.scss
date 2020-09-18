@@ -1,22 +1,31 @@
-
 .trip-assembly-main {
-    // background-color: greenyellow;
     max-width: 90vw;
-    // max-height: 90vh;
+    // height: 100vh;
     background-color: hotpink;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    // grid-template-rows: repeat(35, minmax(30px, 1fr));
 
-    .day-preview-assembly{
-        // height: 85vh;
+    .day-list-assembly {
+        
         display: grid;
         background-color: rgb(70, 31, 209);
         grid-template-rows: repeat(35, minmax(30px, 1fr));
-    }
 
-    
+        * {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: -1px -1px 0 0px black
+        }
+        .activitie-assembly {
+            background-color: red;
+        }
+
+        .activitie-prev-assembly {
+        }
+    }
 }
 
 .destinations-header {

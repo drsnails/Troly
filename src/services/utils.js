@@ -5,7 +5,7 @@ export const utils = {
     makeId,
     calculateDays,
     createMat,
-    getDateDay
+    getDateDay,
 }
 
 function makeId(length = 5) {
@@ -18,12 +18,17 @@ function makeId(length = 5) {
 }
 
 function calculateDays(start, end) {
-    end= new Date(end)
-    start= new Date(start)
+    end = new Date(end)
+    start = new Date(start)
     var difference = end.getTime() - start.getTime();
     var daysDifference = Math.ceil(difference / 1000 / 60 / 60 / 24);
     return daysDifference
 }
+
+
+
+
+
 
 function createMat(cols, rows) {
     const mat = []
@@ -41,3 +46,7 @@ function getDateDay(timeStamp) {
     const time = new Date(timeStamp);
     return time.getDate()
 }
+
+
+
+

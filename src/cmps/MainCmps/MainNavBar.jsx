@@ -12,19 +12,15 @@ class _MainNavBar extends Component {
 
     componentDidMount() {
         window.addEventListener('scroll', this.backgroundChanged);
-        this.unlisten = this.props.history.listen((location, action) => {
-            console.log(this.props);
-        })
+   
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log(this.props);
     }
     
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.backgroundChanged);
-        this.unlisten();
 
     }
 
