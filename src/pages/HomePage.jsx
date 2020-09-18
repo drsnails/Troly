@@ -28,11 +28,12 @@ class _HomePage extends Component {
             <div className="home-page ">
                 {/* {this.getTripPrice()} */}
                 <div className="home-page-hero" >
+
+                </div>
+                <div className="main-container">
                     <Link to="/trip/438577i4h48fu049f/triproute">
                         <button>Eplore</button>
                     </Link>
-                </div>
-                <div className="main-container">
                     <h2>Most Popular Trips</h2>
                     <div>
                         <i className="fas fa-chevron-circle-right  trips-pagination trips-pagination-forward"></i>

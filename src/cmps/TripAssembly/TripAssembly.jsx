@@ -1,76 +1,75 @@
 import React, { Component } from 'react'
 import { utils } from '../../services/utils';
 import { ActivitiePreview } from './ActivitiePreview';
-import { DayPreview } from './DayPreview';
+import { DayList } from '../../cmps/TripAssembly/DayList'
 
-// 1600232400000 16/6 8:00
-// 1600246800000 16/6 12:00
-// 1600257600000 16/6 15:00
 
-// 1600326000000 17/6 10:00
-// 1600329600000 17/6 11:00
-// 1600358400000 17/6 19:00
-
-// 1600407000000 18/6 8:30
-// 1600425000000 18/6 13:30
-// 1600426800000 18/6 14:00
-// 1600434000000 18/6 16:00
-
-// function renderActPreview(props) {
-
-//     return (
-//         <DayPreview props = {props}/>
-//     )
-// }
 
 
 export class TripAssembly extends Component {
 
     state = {
         daysMat: null,
-        startDay: null
+        startDate: null,
+        endDate: null
     }
 
     async componentDidMount() {
-        const { trip } = this.props
         await this.loadDaysMat()
-        this.setState({ getDateDay: utils.getDateDay(trip.startDate) })
+        
+        
     }
 
     loadDaysMat = () => {
-        const { activities } = this.props.trip;
+        const { activities, destinations } = this.props.trip;
+        const destTimeStamp = destinations[0].startDate
         const actsDaysMap = this.mapActsToDays(activities);
-        const mapLen = Object.values(actsDaysMap).length
+        const startDate = utils.getDateDay(destTimeStamp)
+
         const daysMat = utils.createMat(7, 35);
 
-        var col = 0
-        for (let day in actsDaysMap) {
-            const currDayActs = actsDaysMap[day];
-            for (let i = 0; i < currDayActs.length; i++) {
-                const act = currDayActs[i]
-                let row = this.getRowIdx(act.at)
-                for (let j = 0; j < act.duration; j++) {
-                    const time = new Date(act.at)
-                    // daysMat[row++][col] = '{act}'
-                    daysMat[row++][col] = { act }
-                }
+        let col = 0
+        
+
+
+
+        let prevDay = +actsDaysMap[0][0]
+        for (let i = 0; i < actsDaysMap.length; i++) {
+            
+            let currDayActs, day
+            [day, currDayActs] = [+actsDaysMap[i][0], actsDaysMap[i][1]];
+            if (prevDay > day) {
+                day += this.getDaysInMonth(destTimeStamp)
+                // day = prevDay + 1                
             }
-            col++
+            prevDay = day
+
+            col = day - startDate
+            for (let j = 0; j < currDayActs.length; j++) {
+
+                const act = currDayActs[j]
+                let row = this.getRowIdx(act.at)
+                daysMat[row][col] = act
+
+               
+            }
 
         }
         this.setState({ daysMat })
 
+       
     }
+
+
+
 
     renderActPreviews(mat) {
         const actPreviews = []
 
-        for (let i = 0; i < mat.length; i++) {
-            console.log("TripAssembly -> renderActPreviews -> i", i)
-            // this.getCol(mat, i)}
+        for (let i = 0; i < 7; i++) {
+
             var col = this.getCol(mat, i)
-            console.log("TripAssembly -> renderActPreviews -> col", col)
-            actPreviews.push(<DayPreview key={utils.makeId()} day={col} />
+            actPreviews.push(<DayList key={utils.makeId()} day={col} />
             )
 
         }
@@ -78,16 +77,42 @@ export class TripAssembly extends Component {
     }
 
     mapActsToDays = () => {
-        const { activities } = this.props.trip;
+        const { activities, destinations } = this.props.trip;
         activities.sort((act1, act2) => act1.at - act2.at)
-        return activities.reduce((acc, activitie) => {
 
-            const day = utils.getDateDay(activitie.at)
+        const startDate = utils.getDateDay(destinations[0].startDate)
+        const endDate = utils.getDateDay(destinations[0].endDate)
+        let totalDays = utils.calculateDays(destinations[0].startDate, destinations[0].endDate)+1
+        const daysLinear = []
+        for (let i = 0; i< totalDays; i++) {
+            daysLinear.push(startDate+i)
+        }
+
+        let idx = 0
+        let map = activities.reduce((acc, activitie) => {
+
+            let day = utils.getDateDay(activitie.at)
+
             if (!acc[day]) acc[day] = []
             acc[day].push(activitie)
             return acc
 
         }, {})
+        map = this.sortDateMap(map)
+        return map
+    }
+
+
+    getNextBiggerDay(targetDay, FirstDayTime) {
+        let currDay = new Date(FirstDayTime)
+        let nextDay = new Date(currDay.getTime() + (1000 * 60 * 60 * 24))
+
+        while (currDay.getDay() < nextDay.getDay()) {
+            [currDay, nextDay] = [nextDay, new Date(nextDay.getTime() + (1000 * 60 * 60 * 24))]
+        }
+
+        return currDay.getDay() + targetDay + 1
+
     }
 
     getRowIdx = (timeStamp) => {
@@ -99,8 +124,30 @@ export class TripAssembly extends Component {
     }
 
     getCol = (mat, col) => {
-        const arrayColumn = (arr, n) => arr.map(x => x[n]);
-        return arrayColumn(mat, col);
+        const MatColumn = (arr, n) => arr.map(x => x[n]);
+        return MatColumn(mat, col);
+    }
+
+    sortDateMap(map) {
+        let arrSorted = [];
+        for (let day in map) {
+
+            arrSorted.push([day, map[day]]);
+        }
+        arrSorted.sort(function (day1, day2) {
+            return day1[1][0].at - day2[1][0].at;
+        });
+
+        return arrSorted
+
+    }
+
+    getDaysInMonth (timeStamp) {
+        let time = new Date(timeStamp)
+        let year, month; 
+        [month, year] = [time.getMonth(), time.getFullYear()]
+            
+        return new Date(year, month+1, 0).getDate();
     }
 
     render() {
