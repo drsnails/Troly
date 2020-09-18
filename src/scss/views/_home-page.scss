@@ -23,9 +23,19 @@
 .home-page-hero{
     height: 500px;
     background: url('https://i.pinimg.com/originals/90/4d/c8/904dc81cae24a773a9d5e5b8a5f3df12.jpg');
-    object-fit: contain;
+    // object-fit: contain;
+    // background-size: cover;
+    // background-position-y: center;
+    // background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
-    background-position-y: center;
+
+    
     margin-bottom: 30px;
 }
 
@@ -38,8 +48,4 @@
     list-style-type: none;
     grid-gap: 15px;
     width: 100%;
-}
-
-.trips-container{
-    // padding: 40px 0;
 }

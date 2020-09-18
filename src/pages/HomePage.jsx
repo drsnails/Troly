@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
+import { AddTrip } from '../cmps/Home/AddTrip';
 import { TripFilter } from '../cmps/Home/TripFilter';
 import { TripList } from '../cmps/Home/TripList';
 import { loadTrips } from '../store/actions/tripActions'
-
 
 class _HomePage extends Component {
     state = {
@@ -28,11 +28,14 @@ class _HomePage extends Component {
             <div className="home-page ">
                 {/* {this.getTripPrice()} */}
                 <div className="home-page-hero" >
+
+                </div>
+                <div className="main-container">
+
                     <Link to="/trip/438577i4h48fu049f/triproute">
                         <button>Eplore</button>
                     </Link>
-                </div>
-                <div className="main-container">
+                    <AddTrip/>
                     <h2>Most Popular Trips</h2>
                     <div>
                         <i className="fas fa-chevron-circle-right  trips-pagination trips-pagination-forward"></i>
@@ -41,8 +44,9 @@ class _HomePage extends Component {
                     </div>
 
                     <h2>All Trips</h2>
-                    <TripFilter />
-                    <TripList trips={this.props.trips} />
+                    <Link to="/trip">
+                        <button>Explore our planned trips</button>
+                    </Link>
                 </div>
             </div>
         )

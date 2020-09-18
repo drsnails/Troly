@@ -34,7 +34,7 @@ const trips = [
         destinations: [
             {
                 id: 'ksndv8',
-                name: 'Taipei',
+                name: 'taipei',
                 startDate: 1600236000000,
                 endDate: 1600466400000
             }],

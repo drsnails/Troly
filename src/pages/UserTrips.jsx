@@ -7,7 +7,6 @@ class _UserTrips extends Component {
     }
 
     componentDidMount() {
-        console.log('UserTrips', this.props);
     }
 
     render() {
