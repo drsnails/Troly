@@ -1,10 +1,17 @@
 import React from 'react'
 import { utils } from '../../services/utils'
+// var gFreeDays = 14
+export function DestNamePrev({ dest, updateFreeDays, freeDays }) {
 
-export function DestNamePrev({dest}) {
-    console.log("DestNamePrev -> dest", dest)
+    // dest.duration = (dest.isSameEndDay || dest.isSameStartDay) ? dest.duration * 2 - 1 : dest.duration * 2
+    // if (gFreeDays < dest.duration ) dest.duration = gFreeDays
+    // console.log("gFreeDays", gFreeDays)
+    // gFreeDays -= dest.duration
+    // updateFreeDays(freeDays)
+
     return (
-        <div  className="dest-name-preview " style={{gridColumn: `span ${dest.duration}`}}>
+
+        <div className="dest-name-preview " style={{ gridColumn: `span ${dest.duration}` }}>
             {dest.name}
         </div>
     )

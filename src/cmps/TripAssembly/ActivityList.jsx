@@ -3,7 +3,8 @@ import { utils } from '../../services/utils'
 import { ActivitiePreview } from './ActivitiePreview'
 
 
-export function DayList({ day, getRowIdx }) {
+export function ActivityList({ day, getRowIdx }) {
+    console.log("ActivityList -> day", day)
     return (
         <div className="day-list-assembly">
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { utils } from '../../services/utils';
 import { ActivitiePreview } from './ActivitiePreview';
-import { DayList } from '../../cmps/TripAssembly/DayList'
+import { ActivityList } from './ActivityList'
 import { DestinationsHeader } from './DestinationsHeader';
 
 
@@ -15,8 +15,6 @@ export class TripAssembly extends Component {
 
     async componentDidMount() {
         await this.loadDaysMat()
-
-
     }
 
     loadDaysMat = () => {
@@ -36,11 +34,10 @@ export class TripAssembly extends Component {
             }
             prevDay = day
             col = day - startDate
-            // daysMat[0][col] = 'ssd'
-            // daysMat[0][col] = { duration: 1, literalDay: utils.getWeekDay(currDayActs[0].at) }
             for (let j = 0; j < currDayActs.length; j++) {
 
                 const act = currDayActs[j]
+                act.col = col
                 let row = this.getRowIdx(act.at)
                 daysMat[row][col] = act
             }
@@ -64,7 +61,7 @@ export class TripAssembly extends Component {
         for (let i = 0; i < 7; i++) {
 
             var col = this.getCol(mat, i)
-            actPreviews.push(<DayList getRowIdx={this.getRowIdx}  key={utils.makeId()} day={col} />
+            actPreviews.push(<ActivityList getRowIdx={this.getRowIdx} key={utils.makeId()} day={col} />
             )
         }
 
@@ -101,7 +98,7 @@ export class TripAssembly extends Component {
         const time = new Date(timeStamp)
         const hour = time.getHours()
         const minuets = time.getMinutes()
-        let slot = (minuets === 0) ? (hour - 7) * 2 : (hour - 7) * 2 + 1
+        let slot = (minuets === 0) ? (hour - 6) * 2 : (hour - 6) * 2 + 1
         return slot
     }
 
@@ -124,6 +121,7 @@ export class TripAssembly extends Component {
 
     }
 
+
     getDaysInMonth(timeStamp) {
         let time = new Date(timeStamp)
         let year, month;
@@ -133,15 +131,33 @@ export class TripAssembly extends Component {
     }
 
     getMinDestinations = () => {
-        return this.props.trip.destinations.map((destination) => {
+        const { destinations } = this.props.trip
+        let lastEndDate;
+        let freeDaysLeft = 14
+        return destinations.map((destination, idx) => {
+            let isSameStartDay = false
+            let isSameEndDay = false
+            if (utils.getDateDay(destination.startDate) === utils.getDateDay(lastEndDate)) {
+                isSameStartDay = true
+            }
+            if (destinations[idx + 1] && utils.getDateDay(destinations[idx + 1].startDate) === utils.getDateDay(destination.endDate)) {
+                isSameEndDay = true
+            }
+            lastEndDate = destination.endDate
             let totalDays = utils.calculateDays(destination.startDate, destination.endDate) + 1
-            return { name: destination.name, duration: totalDays }
+            let totaHalflDays = (isSameStartDay) ? totalDays * 2 - 1 : totalDays * 2
+            totaHalflDays = (isSameEndDay) ? totaHalflDays - 1 : totaHalflDays
+            totaHalflDays = (totaHalflDays > freeDaysLeft) ? freeDaysLeft : totaHalflDays
+            freeDaysLeft -= totaHalflDays
+
+
+            return { name: destination.name, duration: totaHalflDays, isSameStartDay, isSameEndDay }
         })
     }
 
 
     render() {
-        const { daysMat } = this.state
+        const { daysMat} = this.state
         if (!daysMat) return <div>Loading...</div>
         const acts = this.renderActPreviews(daysMat)
         return (

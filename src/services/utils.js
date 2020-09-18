@@ -38,6 +38,9 @@ function createMat(cols, rows) {
         mat[i] = []
         for (let j = 0; j < cols; j++) {
             mat[i][j] = {}
+            if (j===0) {
+                mat[i][j] = {col: 0}
+            }
         }
     }
 
