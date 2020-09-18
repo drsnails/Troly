@@ -1,0 +1,50 @@
+.route-calendar{
+    border-collapse: collapse;
+    text-align: center;
+   .table-header{
+       background-color: $clr8;
+       
+      
+   }
+   tr{
+       border-bottom:1px solid black ;
+   }
+
+    td,th{
+        padding:15px;
+    }
+    td{
+        position:relative
+    }
+    .start, .full, .end{
+        position: absolute;
+        height: 50%;
+        top: 25%;
+        opacity: 0.4;
+        
+    }
+    .start{
+        right: 0;
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+        width: 45%;
+    }
+    .full{
+        width: 100%;
+        left: 0;
+    }
+    .end{
+        left: 0;
+        border-top-right-radius:50% ;
+        border-bottom-right-radius: 50%;
+        width: 45%;
+
+    }
+    .dest-0{
+        background-color: $clr1;
+    }
+    .dest-1{
+        background-color: $clr2;
+    }
+   
+}

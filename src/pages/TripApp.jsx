@@ -7,7 +7,7 @@ import { tripService } from '.././services/tripService'
 import { TripAssembly } from '../cmps/TripAssembly/TripAssembly'
 import { TripNavBar } from '../cmps/TripApp/TripNavBar'
 import { TripRoute } from '../cmps/TripRoute/TripRoute'
-
+// import locationCevtorRed from 'https://res.cloudinary.com/roidinary/image/upload/v1600377967/locationVectorRed_vzufx4.png'
 
 
 
@@ -25,7 +25,7 @@ class _TripApp extends Component {
             this.setState({ trip })
         }
         catch (err) {
-            console.log('tripApp could not find toy', err);
+            console.log('tripApp could not find trip', err);
         }
     }
 
