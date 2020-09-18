@@ -6,6 +6,8 @@ export const utils = {
     calculateDays,
     createMat,
     getDateDay,
+    getWeekDay,
+    getTimeDayStr,
 }
 
 function makeId(length = 5) {
@@ -45,6 +47,25 @@ function createMat(cols, rows) {
 function getDateDay(timeStamp) {
     const time = new Date(timeStamp);
     return time.getDate()
+}
+
+
+function getWeekDay(timeStamp) {
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const time = new Date(timeStamp);
+    return days[time.getDay()]
+}
+
+function getTimeDayStr(timeStamp) {
+    let time = new Date(timeStamp)
+    let hours = _get2DigTime(time.getHours());
+    let minuets = _get2DigTime(time.getMinutes());
+    return `${hours}:${minuets}`
+}
+
+function _get2DigTime(num) {
+    if ((num + '').length === 1) return '0' + num
+    return num
 }
 
 

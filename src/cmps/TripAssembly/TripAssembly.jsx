@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { utils } from '../../services/utils';
 import { ActivitiePreview } from './ActivitiePreview';
 import { DayList } from '../../cmps/TripAssembly/DayList'
+import { DestinationsHeader } from './DestinationsHeader';
 
 
 
@@ -10,14 +11,12 @@ export class TripAssembly extends Component {
 
     state = {
         daysMat: null,
-        startDate: null,
-        endDate: null
     }
 
     async componentDidMount() {
         await this.loadDaysMat()
-        
-        
+
+
     }
 
     loadDaysMat = () => {
@@ -25,42 +24,38 @@ export class TripAssembly extends Component {
         const destTimeStamp = destinations[0].startDate
         const actsDaysMap = this.mapActsToDays(activities);
         const startDate = utils.getDateDay(destTimeStamp)
-
-        const daysMat = utils.createMat(7, 35);
-
+        let daysMat = utils.createMat(7, 35);
         let col = 0
-        
-
-
 
         let prevDay = +actsDaysMap[0][0]
         for (let i = 0; i < actsDaysMap.length; i++) {
-            
             let currDayActs, day
             [day, currDayActs] = [+actsDaysMap[i][0], actsDaysMap[i][1]];
             if (prevDay > day) {
                 day += this.getDaysInMonth(destTimeStamp)
-                // day = prevDay + 1                
             }
             prevDay = day
-
             col = day - startDate
+            // daysMat[0][col] = 'ssd'
+            // daysMat[0][col] = { duration: 1, literalDay: utils.getWeekDay(currDayActs[0].at) }
             for (let j = 0; j < currDayActs.length; j++) {
 
                 const act = currDayActs[j]
                 let row = this.getRowIdx(act.at)
                 daysMat[row][col] = act
-
-               
             }
-
         }
-        this.setState({ daysMat })
+        daysMat = this.showDaysName(destTimeStamp, daysMat)
 
-       
+        this.setState({ daysMat })
     }
 
-
+    showDaysName(startTime, mat) {
+        for (let j = 0; j < 7; j++) {
+            mat[0][j] = { duration: 1, literalDay: utils.getWeekDay(startTime + j * 24 * 60 ** 2 * 1000) }
+        }
+        return mat
+    }
 
 
     renderActPreviews(mat) {
@@ -69,26 +64,25 @@ export class TripAssembly extends Component {
         for (let i = 0; i < 7; i++) {
 
             var col = this.getCol(mat, i)
-            actPreviews.push(<DayList key={utils.makeId()} day={col} />
+            actPreviews.push(<DayList getRowIdx={this.getRowIdx}  key={utils.makeId()} day={col} />
             )
-
         }
+
         return actPreviews
     }
+
 
     mapActsToDays = () => {
         const { activities, destinations } = this.props.trip;
         activities.sort((act1, act2) => act1.at - act2.at)
 
         const startDate = utils.getDateDay(destinations[0].startDate)
-        const endDate = utils.getDateDay(destinations[0].endDate)
-        let totalDays = utils.calculateDays(destinations[0].startDate, destinations[0].endDate)+1
+        let totalDays = utils.calculateDays(destinations[0].startDate, destinations[destinations.length - 1].endDate) + 1
         const daysLinear = []
-        for (let i = 0; i< totalDays; i++) {
-            daysLinear.push(startDate+i)
+        for (let i = 0; i < totalDays; i++) {
+            daysLinear.push(startDate + i)
         }
 
-        let idx = 0
         let map = activities.reduce((acc, activitie) => {
 
             let day = utils.getDateDay(activitie.at)
@@ -102,18 +96,6 @@ export class TripAssembly extends Component {
         return map
     }
 
-
-    getNextBiggerDay(targetDay, FirstDayTime) {
-        let currDay = new Date(FirstDayTime)
-        let nextDay = new Date(currDay.getTime() + (1000 * 60 * 60 * 24))
-
-        while (currDay.getDay() < nextDay.getDay()) {
-            [currDay, nextDay] = [nextDay, new Date(nextDay.getTime() + (1000 * 60 * 60 * 24))]
-        }
-
-        return currDay.getDay() + targetDay + 1
-
-    }
 
     getRowIdx = (timeStamp) => {
         const time = new Date(timeStamp)
@@ -142,13 +124,21 @@ export class TripAssembly extends Component {
 
     }
 
-    getDaysInMonth (timeStamp) {
+    getDaysInMonth(timeStamp) {
         let time = new Date(timeStamp)
-        let year, month; 
+        let year, month;
         [month, year] = [time.getMonth(), time.getFullYear()]
-            
-        return new Date(year, month+1, 0).getDate();
+
+        return new Date(year, month + 1, 0).getDate();
     }
+
+    getMinDestinations = () => {
+        return this.props.trip.destinations.map((destination) => {
+            let totalDays = utils.calculateDays(destination.startDate, destination.endDate) + 1
+            return { name: destination.name, duration: totalDays }
+        })
+    }
+
 
     render() {
         const { daysMat } = this.state
@@ -156,9 +146,7 @@ export class TripAssembly extends Component {
         const acts = this.renderActPreviews(daysMat)
         return (
             <React.Fragment>
-                <div className="destinations-header">
-                    destinations
-                </div>
+                <DestinationsHeader destinations={this.getMinDestinations()} />
                 <div className={'trip-assembly-main'}>
                     {acts}
                 </div >
