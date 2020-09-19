@@ -3,9 +3,7 @@ import { utils } from '../../services/utils'
 
 export function DayTimeLine() {
 
-    function getTimeFromIdx(idx) {
-        return
-    }
+
     return (
         <div className="time-line-assembly">
 
@@ -13,7 +11,7 @@ export function DayTimeLine() {
                 let times = []
                 for (let i = 0; i < 35; i++) {
                     let time = <div key={utils.makeId()} className="time-assembly">
-                        {<span>7:00</span>}
+                        {(i % 2 === 0) && <span>{`${7 + i / 2}:00`}</span>}
                     </div>
                     times.push(time)
                 }
