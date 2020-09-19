@@ -20,7 +20,8 @@
         position: absolute;
         height: 50%;
         top: 25%;
-        opacity: 0.4;
+        position: absolute;
+        z-index: -1;
         
     }
     .start{
@@ -40,11 +41,6 @@
         width: 45%;
 
     }
-    .dest-0{
-        background-color: $clr1;
-    }
-    .dest-1{
-        background-color: $clr2;
-    }
+   
    
 }
