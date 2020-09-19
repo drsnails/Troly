@@ -1,5 +1,6 @@
 import React from 'react'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { utils } from '../../services/utils';
 
 
 // const API_KEY = 'AIzaSyBXIyfwpDtmz9fLAQI-MUqWuhQtc-GQYoo'
@@ -49,7 +50,7 @@ class _MapContainer extends React.Component {
 
     getMarkers() {
         return this.state.markers.map((marker,idx) => {
-            return (<Marker key={marker.location.lat}
+            return (<Marker key={utils.makeId()}
                 onClick={this.onMarkerClick}
                 title={'The marker`s title will appear as a tooltip.'}
                 name={marker.name}

@@ -9,21 +9,25 @@ import { DestinationsHeader } from './DestinationsHeader';
 export class TripAssembly extends Component {
 
     state = {
+        activities: null,
         daysMat: null,
         page: 0,
         startDate: null,
         endDate: null,
         tripLength: '',
-        actsToDisplay: null
+        actsToDisplay: null,
+        minDestinations: null
     }
 
     async componentDidMount() {
-        const { destinations } = this.props.trip
+        const { destinations, activities } = this.props.trip
         let startDate, endDate
         [startDate, endDate] = [destinations[0].startDate, destinations[destinations.length - 1].endDate]
         const tripLength = utils.calculateDays(startDate, endDate)
-        await this.setState({ tripLength, startDate, endDate })
+        await this.setState({ tripLength, startDate, endDate, activities })
         await this.loadDaysMat()
+        await this.setState({minDestinations: this.getMinDestinations()}, ()=>console.log(this.state))
+        
 
     }
 
@@ -58,6 +62,24 @@ export class TripAssembly extends Component {
         this.setState({ daysMat, actsToDisplay })
     }
 
+    onRemoveAct = (actId) => {
+        let { activities } = this.state;
+        activities = activities.filter((_act => _act.id !== actId))
+        this.props.updateTripAct(activities)
+        this.setState({ activities })
+    }
+
+
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.trip === this.props.trip) return
+        this.setState({ trip: { ...this.props.trip } }, () => {
+            this.loadDaysMat()
+        })
+    }
+
+
+
     showDaysName(startTime, mat) {
         for (let j = 0; j < 7; j++) {
             const date = new Date(startTime + j * 24 * 60 ** 2 * 1000)
@@ -72,7 +94,7 @@ export class TripAssembly extends Component {
         for (let i = 0; i < 7; i++) {
 
             var col = this.getCol(mat, i)
-            actPreviews.push(<ActivityList getRowIdx={this.getRowIdx} key={utils.makeId()} day={col} />
+            actPreviews.push(<ActivityList onEdit={this.onEdit} onRemoveAct={this.onRemoveAct} getRowIdx={this.getRowIdx} key={utils.makeId()} day={col} />
             )
         }
 
@@ -132,6 +154,9 @@ export class TripAssembly extends Component {
         return arrSorted
 
     }
+    onEdit = (act) => {
+        this.props.showModal('editActivity', { saveAct: this.saveAct, act })
+    }
 
 
     getDaysInMonth(timeStamp) {
@@ -174,7 +199,6 @@ export class TripAssembly extends Component {
         const linearDays = []
         let { startDate, tripLength } = this.state
         for (let i = 0; i < tripLength; i++) {
-            let currDay = utils.getDateDay(startDate + i * 24 * 60 * 60 * 1000)
             linearDays.push(startDate + i * 24 * 60 * 60 * 1000)
         }
         return linearDays
@@ -200,22 +224,38 @@ export class TripAssembly extends Component {
         return false
     }
 
+    saveAct = (act) => {
+        let { activities } = this.state;
+        if (act.id) {
+
+            activities = activities.map(_act => {
+
+                return (_act.id === act.id) ? act : _act
+            })
+        } else {
+            activities.push(act)
+        }
+
+        this.props.updateTripAct(activities)
+        this.setState({ activities })
+    }
+
 
 
     render() {
-        const { daysMat } = this.state
-        if (!daysMat) return <div>Loading...</div>
-        this.getLinearTripDays()
+        const { daysMat, activities, minDestinations } = this.state
+        if (!daysMat || !minDestinations) return <div>Loading...</div>
+        // this.getLinearTripDays()
         const acts = this.renderActPreviews(daysMat)
         return (
-            <React.Fragment>
-                <DestinationsHeader destinations={this.getMinDestinations()} />
+            <div>
+                <DestinationsHeader destinations={minDestinations} />
                 <div className={'trip-assembly-main full'}>
-                    <DayTimeLine/>
+                    <DayTimeLine />
                     {acts}
                 </div >
-                <button className='editActivity' onClick={()=>this.props.showModal('editActivity')}>add activity</button>
-            </React.Fragment>
+                <button className='editActivity' onClick={() => this.props.showModal('editActivity', { saveAct: this.saveAct, act: null })}>add activity</button>
+            </div>
         )
     }
 }

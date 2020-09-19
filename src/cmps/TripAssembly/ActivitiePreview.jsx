@@ -2,7 +2,7 @@
 import React from 'react'
 import { utils } from '../../services/utils'
 
-export function ActivitiePreview({ act, getRowIdx }) {
+export function ActivitiePreview({ act, getRowIdx, onRemoveAct, onEdit }) {
     const startTime = utils.getTimeDayStr(act.at)
     const endTime = utils.getTimeDayStr(act.at + (+act.duration / 2) * 60 * 60 * 1000)
     const rowIdx = getRowIdx(act.at)
@@ -16,6 +16,8 @@ export function ActivitiePreview({ act, getRowIdx }) {
             <p>{act.at && `${startTime}-${endTime}`}</p>
             <p>{act.destination}</p>
             <p>{act.name}</p>
+            {act.name && <button onClick={()=>{onEdit(act)}} className="edit-activitie">edit</button>}
+            {act.name && <button onClick={()=>{onRemoveAct(act.id)}} className="delete-activitie">X</button>}
         </div>
     )
 }

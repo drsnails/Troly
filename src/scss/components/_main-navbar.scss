@@ -24,7 +24,15 @@
         position: absolute;
         top: 45px;
         left: -21px;
-        width: 90px;
+        width: 140px;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.3s;
+        background-color: $clr10;
+        &.open{
+            height: 150px;
+            padding: 20px;
+        }
     }
     }
  
