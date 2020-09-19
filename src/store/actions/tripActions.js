@@ -17,3 +17,17 @@ export function loadTrips() {
         dispatch({ type: 'SET_TRIPS', trips })
     }
 }
+
+
+export function addTrip(newTrip) {
+    return async dispatch => {
+        try {
+            const trip = await tripService.save(newTrip)
+            dispatch({ type: 'EDIT_TRIP', trip })
+            return trip
+        }
+        catch (err) {
+            console.log('TripAction: Could not save trip', err);
+        }
+    }
+}

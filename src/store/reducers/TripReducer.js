@@ -12,7 +12,14 @@ export function tripReducer(state = initialState, action) {
                 ...state,
                 trips: action.trips
             }
-            
+        case 'EDIT_TRIP':
+            return {
+                ...state, trips: state.trips.map(trip => {
+                    if (action.trip._id === trip._id) return action.trip
+                    return trip;
+                })
+            }
+
         case 'SET_ATTRACIONS':
             return {
                 ...state,

@@ -12,9 +12,9 @@ class _HomePage extends Component {
     }
 
     async componentDidMount() {
-        const trips = await this.props.loadTrips()
-    
-        
+        await this.props.loadTrips()
+
+
     }
 
     // getTripsForDisplay = () => {
@@ -37,7 +37,7 @@ class _HomePage extends Component {
                     <Link to="/trip/438577i4h48fu049f/triproute">
                         <button>Eplore</button>
                     </Link>
-                    <AddTrip/>
+                    <AddTrip />
                     <h2>Most Popular Trips</h2>
                     <div>
                         <i className="fas fa-chevron-circle-right  trips-pagination trips-pagination-forward"></i>
