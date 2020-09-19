@@ -2,28 +2,28 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink, Link, withRouter } from 'react-router-dom'
 
+import { UserPreview } from '../MainCmps/UserPreview'
+
 import { showModal } from '../../store/actions/modalActions'
 import { logout } from '../../store/actions/userActions'
-
-
 
 class _MainNavBar extends Component {
     state = {
         navBar: '',
-        loggedInUser:''
+        loggedInUser: ''
     }
 
     componentDidMount() {
-        this.setState({loggedInUser:this.props.usersData.loggedInUser})
+        this.setState({ loggedInUser: this.props.usersData.loggedInUser })
         window.addEventListener('scroll', this.backgroundChanged);
-   
+
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if(this.state.loggedInUser===this.props.usersData.loggedinUser) return
-        this.setState({loggedInUser:this.props.usersData.loggedinUser})
+        if (this.state.loggedInUser === this.props.usersData.loggedinUser) return
+        this.setState({ loggedInUser: this.props.usersData.loggedinUser })
     }
-    
+
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.backgroundChanged);
@@ -46,9 +46,7 @@ class _MainNavBar extends Component {
                 <Link to="/" > <h1 className="logo">Trolly</h1></Link>
                 <div className="flex Justify-between main-navbar-links">
                     <NavLink to="/about" >About</NavLink>
-                    <NavLink to="/user/:id" >User</NavLink>
-                    {/* <NavLink to="/loginsignup" >Login</NavLink> */}
-                   {this.state.loggedInUser?<div onClick={()=>this.props.logout()}>Logout</div>:<div onClick={()=>this.props.showModal('login')}>Login</div>} 
+                    {this.state.loggedInUser ? <UserPreview logout={this.props.logout} user={this.state.loggedInUser} /> : <div onClick={() => this.props.showModal('login')}>Login</div>}
                 </div>
             </div>
         )

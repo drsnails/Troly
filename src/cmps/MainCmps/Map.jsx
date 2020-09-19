@@ -63,8 +63,9 @@ class _MapContainer extends React.Component {
 
     containerStyle = {
         position: 'relative',
-        width: '400px',
-        height: '300px'
+        width: '300px',
+        height: '200px',
+        margin: '0 auto 20px'
 
     }
 

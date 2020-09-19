@@ -17,6 +17,15 @@
     .logo{
         margin: 0;
     }
+    >div>div{
+        position:relative;
+    }
+    .user-preview-expand{
+        position: absolute;
+        top: 45px;
+        left: -21px;
+        width: 90px;
+    }
     }
  
 

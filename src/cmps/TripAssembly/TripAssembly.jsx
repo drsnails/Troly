@@ -214,6 +214,7 @@ export class TripAssembly extends Component {
                     <DayTimeLine/>
                     {acts}
                 </div >
+                <button className='editActivity' onClick={()=>this.props.showModal('editActivity')}>add activity</button>
             </React.Fragment>
         )
     }
