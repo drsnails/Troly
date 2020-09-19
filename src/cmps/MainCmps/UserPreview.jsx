@@ -21,7 +21,7 @@ export class UserPreview extends Component {
 
                 <div >
                     <span onClick={this.toggleExpand}>{this.props.user.username}</span>
-                    {this.state.expand && <div className="user-preview-expand flex column">
+                    { <div className={`user-preview-expand flex column justify-around ${this.state.expand?'open':''}`} >
                         <Link to={`/user/${this.props.user._id}`} >My Trips</Link>
                         <button onClick={this.props.logout}>Logout</button>
                     </div>}

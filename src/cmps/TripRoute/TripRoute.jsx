@@ -6,7 +6,7 @@ import { RouteTimeLine } from './RouteTimeLine'
 
 
 
-export function TripRoute({ trip }) {
+export function TripRoute({ trip,changeOrder }) {
     function getMarkers(){
         return trip.destinations.map(dest=>{
             return {location:dest.location,name:dest.name}})
@@ -15,7 +15,7 @@ export function TripRoute({ trip }) {
 
     return (
         <div className="trip-route flex">
-            <RouteTimeLine trip={trip} />
+            <RouteTimeLine trip={trip} changeOrder={changeOrder} />
             <div className="route-right flex column ">
                 <MapContainer markers={getMarkers()} />
                 <RouteCalendar trip={trip} />
