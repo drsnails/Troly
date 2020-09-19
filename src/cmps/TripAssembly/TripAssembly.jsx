@@ -210,7 +210,7 @@ export class TripAssembly extends Component {
         return (
             <React.Fragment>
                 <DestinationsHeader destinations={this.getMinDestinations()} />
-                <div className={'trip-assembly-main'}>
+                <div className={'trip-assembly-main full'}>
                     <DayTimeLine/>
                     {acts}
                 </div >
