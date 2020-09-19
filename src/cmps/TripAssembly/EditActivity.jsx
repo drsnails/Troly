@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class EditAttraction extends Component {
+export class EditActivity extends Component {
     state = {
         name: '',
         date: '',

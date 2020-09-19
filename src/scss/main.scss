@@ -12,6 +12,8 @@
 @import "basics/buttons.scss";
 
 //component
+@import './components/TripRoute/trip-route';
+@import './components/trip-app.scss';
 @import './components/main/modal.scss';
 @import './components/tripAssembly.scss';
 @import './components/main-navbar.scss';
@@ -29,5 +31,5 @@
 
 
 main>*:not(.home-page){
-    padding-top: 100px;
+    padding-top: 52px
 }

@@ -4,7 +4,6 @@ import { ActivitiePreview } from './ActivitiePreview'
 
 
 export function ActivityList({ day, getRowIdx }) {
-    console.log("ActivityList -> day", day)
     return (
         <div className="day-list-assembly">
 
