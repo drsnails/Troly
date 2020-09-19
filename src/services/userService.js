@@ -1,4 +1,4 @@
-import storageService from './asyncStorageService'
+import {storageService} from './asyncStorageService'
 // import httpService from './httpService'
 
 export const userService = {
@@ -34,7 +34,7 @@ function update(user) {
 async function login(userCred) {
     // const user = await httpService.post('auth/login', userCred)
     const users = await storageService.query('user')
-    const user = users.find(user => user.username === userCred.username)
+    const user = users.find(user => user.email === userCred.email)
     if (user) return _handleLogin(user)
 }
 async function signup(userCred) {
