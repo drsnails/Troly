@@ -14,11 +14,11 @@ export function TripRoute({ trip }) {
     }
 
     return (
-        <div className="flex">
+        <div className="trip-route flex">
             <RouteTimeLine trip={trip} />
-            <div className="flex column">
-                <RouteCalendar trip={trip} />
+            <div className="route-right flex column ">
                 <MapContainer markers={getMarkers()} />
+                <RouteCalendar trip={trip} />
             </div>
 
 

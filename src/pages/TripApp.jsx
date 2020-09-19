@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Route, Router, Switch, withRouter } from 'react-router-dom'
 import { loadTrip } from '../store/actions/tripActions'
+import { showModal } from '../store/actions/modalActions'
 // import { TripRoute } from '../cmps/TripRoute'
 import { tripService } from '.././services/tripService'
 import { TripAssembly } from '../cmps/TripAssembly/TripAssembly'
@@ -33,14 +34,16 @@ class _TripApp extends Component {
         const { trip } = this.state
         if (!trip) return <div>Loading....</div>
         return (
-            <div className="trip-app">
-                <TripNavBar tripId={trip._id} />
+            <div className="trip-app main-container ">
                 <Switch>
                     <Route path="/trip/:id/triproute">
+                        <img className="trip-main-img full" src={this.state.trip.imgUrl}></img>
+                        <TripNavBar tripId={trip._id} />
                         <TripRoute trip={trip}></TripRoute>
                     </Route>
                     <Route path="/trip/:id/tripassembly">
-                        <TripAssembly trip={trip}></TripAssembly>
+                        <TripNavBar tripId={trip._id} />
+                        <TripAssembly trip={trip} showModal={this.props.showModal}></TripAssembly>
                     </Route>
                 </Switch>
                 <p>{trip.destinations[0].name}</p>
@@ -56,6 +59,7 @@ const mapStateToProps = state => {
     }
 }
 const mapDispatchToProps = {
-    loadTrip
+    loadTrip,
+    showModal
 }
 export const TripApp = connect(mapStateToProps, mapDispatchToProps)(withRouter(_TripApp))

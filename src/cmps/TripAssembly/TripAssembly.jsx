@@ -165,6 +165,7 @@ export class TripAssembly extends Component {
                 <div className={'trip-assembly-main'}>
                     {acts}
                 </div >
+                <button className='editActivity' onClick={()=>this.props.showModal('editActivity')}>add activity</button>
             </React.Fragment>
         )
     }

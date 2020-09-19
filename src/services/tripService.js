@@ -31,7 +31,7 @@ const trips = [
             imgUrl: 'http://jbdcsdcj'
         }],
         createdBy: 'u101',
-        imgUrl: 'http//vkjbfcd.jpg',
+        imgUrl: 'https://images.unsplash.com/photo-1484804959297-65e7c19d7c9f?ixlib=rb-1.2.1',
         destinations: [
             {
                 id: 'ksndv8',
@@ -176,7 +176,7 @@ const trips = [
             imgUrl: 'http://jbdcsdcj'
         }],
         createdBy: 'jbkjg876iug865gl',
-        imgUrl: 'http//vkjbfcd.jpg',
+        imgUrl: 'https://images.unsplash.com/photo-1484804959297-65e7c19d7c9f?ixlib=rb-1.2.1',
         destinations: [{
             id: 'ksndv8',
             name: 'Taipei',
