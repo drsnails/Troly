@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { utils } from '../../services/utils';
-import { ActivitiePreview } from './ActivitiePreview';
 import { ActivityList } from './ActivityList'
 import { DestinationsHeader } from './DestinationsHeader';
 
