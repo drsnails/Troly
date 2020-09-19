@@ -25,8 +25,8 @@ export class Login extends React.Component {
     render() {
         return (
             <form onSubmit={this.onSubmit} >
-                <input className="special-input" type="email" placeholder="email" name="email"></input>
-                <input className="special-input" type="password" placeholder="password" name="password"></input>
+                <input className="styled-input" type="email" placeholder="email" name="email"></input>
+                <input className="styled-input" type="password" placeholder="password" name="password"></input>
                 <button>Login</button>
                 <p>not a user? please <span onClick={()=>this.props.handleClick('signup')}>sign up</span></p>
                 {this.state.msg && <p>{this.state.msg}</p>}

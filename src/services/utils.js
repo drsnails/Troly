@@ -8,6 +8,7 @@ export const utils = {
     getDateDay,
     getWeekDay,
     getTimeDayStr,
+    getRandomInt,
 }
 
 function makeId(length = 5) {
@@ -71,6 +72,8 @@ function _get2DigTime(num) {
     return num
 }
 
-
-
-
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}

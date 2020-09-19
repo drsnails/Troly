@@ -47,7 +47,7 @@ class _HomePage extends Component {
 
                     <h2>All Trips</h2>
                     <Link to="/trip">
-                        <button>Explore our planned trips</button>
+                        <button className="styled-button" >Explore our planned trips</button>
                     </Link>
                 </div>
             </div>
