@@ -7,6 +7,7 @@ import { TripStock } from './pages/TripStock';
 import { LoginSignupPage } from './pages/LoginSignupPage';
 import { TripApp } from './pages/TripApp.jsx'
 import { UserTrips } from './pages/UserTrips';
+import { Modal } from './cmps/MainCmps/Modal';
 
 import '../src/scss/main.scss'
 
@@ -18,6 +19,7 @@ export function App() {
     <div className="App">
         <MainNavBar />
          <main>
+           <Modal/>
         <Switch>
           <Route component={LoginSignupPage} path='/lognsignup' />
           <Route component={TripApp} path='/trip/:id/' />

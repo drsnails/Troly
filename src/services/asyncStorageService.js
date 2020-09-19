@@ -20,7 +20,7 @@ async function getById(entityType, entityId) {
     return trips.find(trip => trip._id === entityId)
 }
 function post(entityType, newEntity) {
-    // newEntity._id = _makeId()
+    newEntity._id = _makeId()
     return query(entityType)
         .then(entities => {
             entities.push(newEntity);
