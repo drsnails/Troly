@@ -318,8 +318,8 @@ const trips = [
             {
                 id: 'ksndv8',
                 name: 'Mongolia',
-                startDate: 1600466400000 + 16 * 24 * 60 * 60 * 1000,
-                endDate: 1600466400000 + 18 * 24 * 60 * 60 * 1000,
+                startDate: 1600466400000 + 16 * 24 * 60 * 60 * 1000 ,
+                endDate: 1600466400000 + 19 * 24 * 60 * 60 * 1000,
                 location: { lat: 33.3949, lng: 94.1240 }
             }
         ],
@@ -514,7 +514,20 @@ const trips = [
                 id: 'KHKHHL77690',
                 destination: 'Mongolia',
 
-                at: 1601809200000 +24*62**2*1000,
+                at: 1601809200000 +1*24*62**2*1000,
+                duration: 1,
+                name: 'beach',
+                notes: ['towel', 'sun screen', 'water', 'beer'],
+                location: { lat: 3224.234234, lng: 43534 },
+                imgUrl: 'http//scac.vodvm.sda',
+                price: { amount: 20, currency: '$' },
+                labels: ['relax']
+            },
+            {
+                id: 'KHKHHL77s690',
+                destination: 'Mongolia',
+
+                at: 1601809200000 +3*24*62**2*1000,
                 duration: 1,
                 name: 'beach',
                 notes: ['towel', 'sun screen', 'water', 'beer'],
