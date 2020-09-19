@@ -1,13 +1,13 @@
 const initialState = {
     users: [],
-    loggedinUser: null
+    loggedInUser: null
 }
 
 export function userReducer(state = initialState, action) {
     switch (action.type) {
         case 'SET_USER':
             return {
-                ...state,
+                users:[...state.users],
                 loggedinUser: action.user
             }
         case 'SET_USERS':

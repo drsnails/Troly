@@ -246,8 +246,8 @@ const trips = [
             price: { amount: 250, currency: '$' },
             labels: ['relax']
         }]
-    },{
-    _id: '986975845156dkvs',
+    }, {
+        _id: '986975845156dkvs',
         members: [{
             _id: 'u101',
             fullName: 'Orly Amdadi',
@@ -306,8 +306,23 @@ const trips = [
                 name: 'nepal',
                 startDate: 1600236000000 + 13 * 24 * 60 * 60 * 1000,
                 endDate: 1600466400000 + 13 * 24 * 60 * 60 * 1000,
-location:{lat:28.3949, lng:84.1240}
-            }],
+                location: { lat: 28.3949, lng: 84.1240 }
+            },
+            {
+                id: 'ksndv8',
+                name: 'Butan',
+                startDate: 1600466400000 + 13 * 24 * 60 * 60 * 1000,
+                endDate: 1600466400000 + 16 * 24 * 60 * 60 * 1000,
+                location: { lat: 33.3949, lng: 94.1240 }
+            },
+            {
+                id: 'ksndv8',
+                name: 'Mongolia',
+                startDate: 1600466400000 + 16 * 24 * 60 * 60 * 1000,
+                endDate: 1600466400000 + 18 * 24 * 60 * 60 * 1000,
+                location: { lat: 33.3949, lng: 94.1240 }
+            }
+        ],
 
         activities: [
 
@@ -315,7 +330,7 @@ location:{lat:28.3949, lng:84.1240}
                 id: 'KHKHHL776',
                 destination: 'nepal',
                 at: 1600232400000 + 13 * 24 * 60 * 60 * 1000,
-                duration: 2,
+                duration: 4,
                 name: 'beach',
                 notes: ['towel', 'sun screen', 'water', 'beer'],
                 location: { lat: 3224.234234, lng: 43534 },
@@ -325,9 +340,9 @@ location:{lat:28.3949, lng:84.1240}
             },
             {
                 id: 'KHKHHL72277',
-                destination: 'Taipei',
+                destination: 'nepal',
                 at: 1600246800000 + 13 * 24 * 60 * 60 * 1000,
-                duration: 5,
+                duration: 1,
                 name: 'beach',
                 notes: ['towel', 'sun screen', 'water', 'beer'],
                 location: { lat: 3224.234234, lng: 43534 },
@@ -337,9 +352,9 @@ location:{lat:28.3949, lng:84.1240}
             },
             {
                 id: 'KHKHHL778',
-                destination: 'Taipei',
+                destination: 'nepal',
                 at: 1600257600000 + 13 * 24 * 60 * 60 * 1000,
-                duration: 5,
+                duration: 1,
                 name: 'beach',
                 notes: ['towel', 'sun screen', 'water', 'beer'],
                 location: { lat: 3224.234234, lng: 43534 },
@@ -349,7 +364,7 @@ location:{lat:28.3949, lng:84.1240}
             },
             {
                 id: 'KHKHHL779',
-                destination: 'Taipei',
+                destination: 'nepal',
                 at: 1600326000000 + 13 * 24 * 60 * 60 * 1000,
                 duration: 2,
                 name: 'beach',
@@ -361,9 +376,9 @@ location:{lat:28.3949, lng:84.1240}
             },
             {
                 id: 'KHKHHL780',
-                destination: 'Taipei',
+                destination: 'nepal',
                 at: 1600329600000 + 13 * 24 * 60 * 60 * 1000,
-                duration: 9,
+                duration: 1,
                 name: 'beach',
                 notes: ['towel', 'sun screen', 'water', 'beer'],
                 location: { lat: 3224.234234, lng: 43534 },
@@ -373,9 +388,9 @@ location:{lat:28.3949, lng:84.1240}
             },
             {
                 id: 'KHKHHL781',
-                destination: 'Taipei',
+                destination: 'nepal',
                 at: 1600358400000 + 13 * 24 * 60 * 60 * 1000,
-                duration: 2,
+                duration: 1,
                 name: 'beach',
                 notes: ['towel', 'sun screen', 'water', 'beer'],
                 location: { lat: 3224.234234, lng: 43534 },
@@ -385,7 +400,7 @@ location:{lat:28.3949, lng:84.1240}
             },
             {
                 id: 'KHKHHL7761',
-                destination: 'Taipei',
+                destination: 'nepal',
                 at: 1600407000000 + 13 * 24 * 60 * 60 * 1000,
                 duration: 1,
                 name: 'beach',
@@ -397,7 +412,7 @@ location:{lat:28.3949, lng:84.1240}
             },
             {
                 id: 'KHKHHL7762',
-                destination: 'Taipei',
+                destination: 'nepal',
                 at: 1600425000000 + 13 * 24 * 60 * 60 * 1000,
                 duration: 1,
                 name: 'beach',
@@ -409,9 +424,9 @@ location:{lat:28.3949, lng:84.1240}
             },
             {
                 id: 'KHKHHL7763',
-                destination: 'Taipei',
+                destination: 'nepal',
                 at: 1600426800000 + 13 * 24 * 60 * 60 * 1000,
-                duration: 4,
+                duration: 1,
                 name: 'beach',
                 notes: ['towel', 'sun screen', 'water', 'beer'],
                 location: { lat: 3224.234234, lng: 43534 },
@@ -421,9 +436,9 @@ location:{lat:28.3949, lng:84.1240}
             },
             {
                 id: 'KHKHHL7764',
-                destination: 'Taipei',
+                destination: 'nepal',
                 at: 1600434000000 + 13 * 24 * 60 * 60 * 1000,
-                duration: 5,
+                duration: 1,
                 name: 'beach',
                 notes: ['towel', 'sun screen', 'water', 'beer'],
                 location: { lat: 3224.234234, lng: 43534 },
@@ -433,9 +448,9 @@ location:{lat:28.3949, lng:84.1240}
             },
             {
                 id: 'KHKHHL778889',
-                destination: 'Taipei',
-                at: 1600596000000 + 13 * 24 * 60 * 60 * 1000,
-                duration: 8,
+                destination: 'Butan',
+                at: 1601708400000 ,
+                duration: 1,
                 name: 'beach',
                 notes: ['towel', 'sun screen', 'water', 'beer'],
                 location: { lat: 3224.234234, lng: 43534 },
@@ -445,11 +460,10 @@ location:{lat:28.3949, lng:84.1240}
             },
             {
                 id: 'KHKHHL776990',
-                destination: 'Taipei',
-                // 1601047800000
+                destination: 'Butan',
 
-                at: 1600615800000 + 13 * 24 * 60 * 60 * 1000,
-                duration: 3,
+                at: 1601739000000 ,
+                duration: 1,
                 name: 'beach',
                 notes: ['towel', 'sun screen', 'water', 'beer'],
                 location: { lat: 3224.234234, lng: 43534 },
@@ -458,10 +472,11 @@ location:{lat:28.3949, lng:84.1240}
                 labels: ['relax']
             },
             {
-                id: 'KHKHHL72762',
-                destination: 'Taipei',
-                at: 1600615800000 + 14 * 24 * 60 * 60 * 1000,
-                duration: 5,
+                id: 'KHKHHL776990',
+                destination: 'Butan',
+
+                at: 1601708400000 + 1 * 24 * 60 * 60 * 1000,
+                duration: 1,
                 name: 'beach',
                 notes: ['towel', 'sun screen', 'water', 'beer'],
                 location: { lat: 3224.234234, lng: 43534 },
@@ -470,10 +485,11 @@ location:{lat:28.3949, lng:84.1240}
                 labels: ['relax']
             },
             {
-                id: 'KHK3HHL7769',
-                destination: 'Taipei',
-                at: 1600615800000 + 15 * 24 * 60 * 60 * 1000 - 4 * 60 ** 2 * 1000,
-                duration: 6,
+                id: 'KHKHHL7762990',
+                destination: 'Butan',
+
+                at: 1601809200000,
+                duration: 1,
                 name: 'beach',
                 notes: ['towel', 'sun screen', 'water', 'beer'],
                 location: { lat: 3224.234234, lng: 43534 },
@@ -482,10 +498,11 @@ location:{lat:28.3949, lng:84.1240}
                 labels: ['relax']
             },
             {
-                id: 'KHKH45HL7780',
-                destination: 'Taipei',
-                at: 1600615800000 + 17 * 24 * 60 * 60 * 1000,
-                duration: 6,
+                id: 'KHKHHL77690',
+                destination: 'Butan',
+
+                at: 1601809200000 +24*60**2*1000,
+                duration: 1,
                 name: 'beach',
                 notes: ['towel', 'sun screen', 'water', 'beer'],
                 location: { lat: 3224.234234, lng: 43534 },
@@ -493,6 +510,21 @@ location:{lat:28.3949, lng:84.1240}
                 price: { amount: 20, currency: '$' },
                 labels: ['relax']
             },
+            {
+                id: 'KHKHHL77690',
+                destination: 'Mongolia',
+
+                at: 1601809200000 +24*62**2*1000,
+                duration: 1,
+                name: 'beach',
+                notes: ['towel', 'sun screen', 'water', 'beer'],
+                location: { lat: 3224.234234, lng: 43534 },
+                imgUrl: 'http//scac.vodvm.sda',
+                price: { amount: 20, currency: '$' },
+                labels: ['relax']
+            },
+            
+
         ]
     }
 ]
@@ -508,35 +540,35 @@ async function query(filterBy) {
     // const queryStr = `?search=${filterBy.search}&minPrice=${filterBy.minPrice}&maxPrice=${filterBy.maxPrice}&type=${filterBy.type}&inStock=${filterBy.inStock}
     // `;
     // return httpService.get(`trip${queryStr}`);
-    let tripsToReturn =  await storageService.query('trips')
+    let tripsToReturn = await storageService.query('trips')
     if (!tripsToReturn.length) {
         tripsToReturn = await storageService.postAll('trips', trips)
-        console.log(tripsToReturn,'query');
+        console.log(tripsToReturn, 'query');
     }
     return Promise.resolve(tripsToReturn)
 }
 
 
 async function getById(tripId) {
-    const trip = await storageService.getById('trips',tripId)
+    const trip = await storageService.getById('trips', tripId)
     return Promise.resolve(trip)
     // return httpService.get(`trip/${tripId}`)
 
 }
 
 function remove(tripId) {
-    return storageService.remove('trips',tripId)
+    return storageService.remove('trips', tripId)
     // return httpService.delete(`trip/${tripId}`)
 }
 
 function save(trip) {
     if (trip._id) {
-        return storageService.put('trips',trip)
+        return storageService.put('trips', trip)
         // return httpService.put(`trip/${trip._id}`, trip)
 
     } else {
         trip._id = utils.makeId()
-        return storageService.post('trips',trip)
+        return storageService.post('trips', trip)
         // return httpService.post('trip', trip)
     }
 }
