@@ -1,7 +1,8 @@
 import React from 'react'
+import { utils } from '../../services/utils'
 import { TripPreview } from './TripPreview'
 
-export function TripList({ trips }) {
+export function TripList({ trips, addClass }) {
 
 
 
@@ -42,18 +43,15 @@ export function TripList({ trips }) {
 
 
     ]
-
-    function getRandomPic(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1) + min);
-    }
+    if (!trips) return <p>loading</p>
     return (
-        <div className="trip-list trips-container">
+        <div className={'trip-list trips-container ' + (addClass? addClass :'') }>
          
-            {trips.map((trip, idx) =>
-                <TripPreview key={trip._id} trip={trip} img={imgs[getRandomPic(0, imgs.length - 1)]} />
-            )}
+            {trips.length? trips.map((trip, idx) =>
+                <TripPreview key={trip._id} trip={trip}  addClass={addClass} img={imgs[utils.getRandomInt(0, imgs.length - 1)]} />
+            ) :
+            <TripPreview key={trips._id} trip={trips} addClass={addClass}  img={imgs[utils.getRandomInt(0, imgs.length - 1)]}/>
+        }
            
 
         </div>

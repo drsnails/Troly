@@ -28,7 +28,6 @@ class _TripStock extends Component {
 
     render() {
         const trips = this.getTripsForDisplay()
-        console.log(trips);
         return (
             <div>
                 <h2>All Trips</h2>

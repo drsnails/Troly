@@ -28,7 +28,6 @@ class _AddTrip extends Component {
             newtrip.startDate = Date.now()
             newtrip.endDate = new Date(Date.now() + 1 * 1000 * 60 * 60 * 24)
         }
-        console.log(newtrip.endDate);
         let location = this.getRandomLatLng()
         newtrip.location = location
 

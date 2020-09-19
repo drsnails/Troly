@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { AddTrip } from '../cmps/Home/AddTrip';
 import { TripFilter } from '../cmps/Home/TripFilter';
 import { TripList } from '../cmps/Home/TripList';
+import { TripSlider } from '../cmps/Home/TripSlider';
 import { loadTrips } from '../store/actions/tripActions'
 
 class _HomePage extends Component {
@@ -23,26 +24,24 @@ class _HomePage extends Component {
 
 
     render() {
-        // const {trips} =this.state
-        if (!this.props.trips) return <p>Loading Trips . . .</p>
+        if (!this.props.trips[0]) return <p>Loading Trips . . .</p>
         return (
 
             <div className="home-page ">
                 {/* {this.getTripPrice()} */}
                 <div className="home-page-hero" >
+                    <section className="slideShow">
+                            <TripSlider trips={this.props.trips} />
+                    </section>
+                </div>  
+                <div className="main-container main-home-page">
 
-                </div>
-                <div className="main-container">
-
-                    <Link to="/trip/438577i4h48fu049f/triproute">
-                        <button>Eplore</button>
-                    </Link>
                     <AddTrip />
                     <h2>Most Popular Trips</h2>
                     <div>
-                        <i className="fas fa-chevron-circle-right  trips-pagination trips-pagination-forward"></i>
+                        {/* <i className="fas fa-chevron-circle-right  trips-pagination trips-pagination-forward"></i> */}
                         {<TripList trips={this.props.trips} /> || <p>Loading Trips . . .</p>}
-                        <i className="fas fa-chevron-circle-left trips-pagination trips-pagination-backward"></i>
+                        {/* <i className="fas fa-chevron-circle-left trips-pagination trips-pagination-backward"></i> */}
                     </div>
 
                     <h2>All Trips</h2>

@@ -22,30 +22,51 @@
 
 .home-page-hero{
     height: 500px;
-    background: url('https://i.pinimg.com/originals/90/4d/c8/904dc81cae24a773a9d5e5b8a5f3df12.jpg');
-    // object-fit: contain;
-    // background-size: cover;
-    // background-position-y: center;
-    // background-attachment: scroll;
+    background: url('https://nuwallpaperhd.info/wp-content/uploads/2018/01/Best-Beautiful-Maldives-Wallpaper.jpg');
+    object-fit: cover;
     background-repeat: no-repeat;
     background-attachment: scroll;
-    background-position: center center;
+    background-position: center left;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-
-    
     margin-bottom: 30px;
 }
 
-.trip-list{
-    margin-block-start: 0;
-    margin-block-end: 0;
-    padding-inline-start: 0;
-    justify-content: center;
-    padding: 0 30px 30px;
-    list-style-type: none;
-    grid-gap: 15px;
+.main-home-page{
+margin-top: 250px;
+}
+
+.slideShow{
+    height: 550px;
+    width: 800px;
+    position: absolute;
+    right: 2%;
+    top: 140px;
+    margin-bottom:20px ;
+}
+
+.swiper-container {
     width: 100%;
+    height: 100%;
+}
+.swiper-slide{
+    height: 100%;
+    width: 100%;
+    color: white;
+    padding: 10px;
+    margin: 0;
+    background: transparent;
+    background-position: center;
+    background-size: cover;
+}
+
+.swiper-button-prev::after, .swiper-button-next::after{
+    color: rgb(238, 239, 255);
+    font-weight: bold;
+    font-size: 1.5rem;
+    // background-color: rgb(63, 63, 63);
+    padding: 10px;
+    border-radius: 100px;
 }
