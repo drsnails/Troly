@@ -36,7 +36,6 @@ export function TripSlider({ trips }) {
             stretch={500}
             depth={200}
             modifier={2} 
-            slideShadows={true}
             centeredSlides={ true}
             // slidesPerView={'auto'}
             // autoplay={true}
