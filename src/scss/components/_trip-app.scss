@@ -18,4 +18,80 @@
             }
         }
     }
+
+    .chat-button{
+        position: fixed;
+        left: 20px;
+        bottom: 20px;
+        width: 40px;
+    }
+    .chat-container{
+        visibility: hidden;
+        height: 0;
+        width: 0;
+        position:fixed;
+        bottom: 40px;
+        left: 40px;
+        transition: height 0.3s, width 0.3s;
+        &.open{
+            visibility: visible;
+            height: 450px;
+            width: 350px;
+        }
+        .chat-header{
+            padding: 10px;
+            text-align: center;
+            background-color: $clr10;
+            border-bottom: 1px solid $clr11;
+            border-top-right-radius: 50px;
+        }
+        .chat-history{
+            flex: 1;
+            padding: 5%;
+            background-color: $clr10;
+            overflow-y: scroll;
+            border-bottom: 1px solid $clr11;;
+            .message-data{
+                margin-bottom: 15px;
+            }
+            .message{
+                background-color: $clr1;
+                padding: 18px 20px;
+                line-height: 26px;
+                font-size: 16px;
+                border-radius: 7px;
+                margin-bottom: 30px;
+                width: 90%;
+                position: relative;
+            }
+            .message::after{
+                bottom: 100%;
+                left: 7%;
+                border: solid transparent;
+                content: " ";
+                height: 0;
+                width: 0;
+                position: absolute;
+                pointer-events: none;
+                border-bottom-color: $clr1;
+                border-width: 10px;
+                margin-left: -10px;
+            }
+        }
+        .chat-send{
+            padding: 5%;
+            background-color: $clr10;
+            border-bottom-left-radius: 50px;
+            textarea{
+                height: 75px;
+                border-radius: 2px;
+                border: none;
+            }
+            button{
+                width: 100px;
+                align-self: flex-end;
+            }
+        }
+    }
+
 }

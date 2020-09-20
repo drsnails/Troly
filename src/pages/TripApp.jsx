@@ -10,12 +10,14 @@ import { TripNavBar } from '../cmps/TripApp/TripNavBar'
 import { TripRoute } from '../cmps/TripRoute/TripRoute'
 import { utils } from '../services/utils'
 import { logDOM } from '@testing-library/react'
+import { Chat } from '../cmps/TripApp/Chat'
 // import locationCevtorRed from 'https://res.cloudinary.com/roidinary/image/upload/v1600377967/locationVectorRed_vzufx4.png'
 
 class _TripApp extends Component {
 
     state = {
-        trip: ''
+        trip: '',
+        chatOpen:false
     }
 
     async componentDidMount() {
@@ -97,6 +99,10 @@ class _TripApp extends Component {
         })
     }
 
+    toggleChat=()=>{
+        this.setState({chatOpen:!this.state.chatOpen})
+    }
+
     render() {
         const { trip } = this.state
         if (!trip) return <div>Loading....</div>
@@ -113,7 +119,8 @@ class _TripApp extends Component {
                         <TripAssembly trip={trip} updateTripAct={this.updateTripAct} showModal={this.props.showModal} closeModal={this.props.closeModal}></TripAssembly>
                     </Route>
                 </Switch>
-                <p>{trip.destinations[0].name}</p>
+                <Chat chatOpen={this.state.chatOpen} trip={this.state.trip}/>
+                <button className="chat-button styled-button" onClick={this.toggleChat}>C</button>
             </div >
         )
     }

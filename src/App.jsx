@@ -10,25 +10,29 @@ import { UserTrips } from './pages/UserTrips';
 import { Modal } from './cmps/MainCmps/Modal';
 
 import '../src/scss/main.scss'
+import { Loader } from './cmps/MainCmps/Loader';
+import { Footer } from './cmps/MainCmps/Footer';
 
 
 export function App() {
 
   return (
 
-    <div className="App">
-        <MainNavBar />
-         <main>
-           <Modal/>
+    <div style={{position:"relative"}} className="App">
+      <MainNavBar />
+      <main>
+        <Modal />
+        <Loader />
         <Switch>
           <Route component={LoginSignupPage} path='/lognsignup' />
           <Route component={TripApp} path='/trip/:id/' />
           <Route component={UserTrips} path='/user/:id' />
-          <Route component={TripStock} path='/trip'/>
+          <Route component={TripStock} path='/trip' />
           <Route component={About} path='/about' />
           <Route exact component={HomePage} path='/' />
         </Switch>
       </main>
+        <Footer/>
     </div>
   );
 }
