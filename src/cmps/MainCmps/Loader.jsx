@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 class _Loader extends React.Component {
     render() {
-        if(!this.props.loader)  return <div></div>
+        if(!this.props.loader)  return <React.Fragment/>
 
         return (
             <div className="positioning-container">
