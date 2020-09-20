@@ -1,7 +1,8 @@
 const initialState = {
     isShown: false,
     props: null,
-    cmp:null
+    cmp:null,
+    loaderOn:false
 }
 
 export function modalReducer(state = initialState, action) {
@@ -18,6 +19,15 @@ export function modalReducer(state = initialState, action) {
                 props: null,
                 cmp:null
             }
+            case 'SET_LOADER':
+                return {
+                    loaderOn: true,
+                }
+            case 'CLOSE_LOADER':
+                return {
+                    loaderOn: false,
+                }
+
         default:
             return state
     }

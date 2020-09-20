@@ -1,33 +1,33 @@
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 
 const baseUrl = (process.env.NODE_ENV === 'production')? '' : '//localhost:3030'
 // const socketService = createSocketService();
-const socketService = createDummySocketService();
+export const socketService = createDummySocketService();
 
 window.socketService = socketService;
-export const socketService;
+// export const socketService;
 
-function createSocketService() {
-  var socket;
-  const socketService = {
-    setup() {
-      socket = io(baseUrl);
-    },
-    on(eventName, cb) {
-      socket.on(eventName, cb);
-    },
-    off(eventName, cb) {
-      socket.off(eventName, cb);
-    },
-    emit(eventName, data) {
-      socket.emit(eventName, data);
-    },
-    terminate() {
-      socket = null;
-    }
-  }
-  return socketService;
-}
+// function createSocketService() {
+//   var socket;
+//   const socketService = {
+//     setup() {
+//       socket = io(baseUrl);
+//     },
+//     on(eventName, cb) {
+//       socket.on(eventName, cb);
+//     },
+//     off(eventName, cb) {
+//       socket.off(eventName, cb);
+//     },
+//     emit(eventName, data) {
+//       socket.emit(eventName, data);
+//     },
+//     terminate() {
+//       socket = null;
+//     }
+//   }
+//   return socketService;
+// }
 
 function createDummySocketService() {
   var listenersMap = {}

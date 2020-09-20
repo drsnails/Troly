@@ -21,6 +21,7 @@ export function TripRoute({ trip,changeOrder }) {
                 <MapContainer markers={getMarkers()} />
                 <RouteCalendar trip={trip} />
             </div>
+            {/* <img className="hot-balloon" src="https://res.cloudinary.com/roidinary/image/upload/v1600627563/Asset4_qt7ydl.png"></img> */}
 
 
         </div>
