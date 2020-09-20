@@ -17,7 +17,6 @@
         height: fit-content;
         background-color: #fff;
         border-radius: 5px;
-        padding: 20px;
         text-align: center;
         align-items: center;
         justify-content: space-around;
@@ -27,6 +26,17 @@
             width: 100%;
             position: relative;
             text-align: center;
+            background-color: $clr10;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            p{
+                flex: 1;
+            }
+            button{
+                border:none;
+                outline: none;
+                background-color: transparent;
+            }
 
         }
         .modal-content{
@@ -35,42 +45,48 @@
 
     }
 }
-
-
-.review-modal form {
+.login-form{
     width: 50%;
-    height: fit-content;
-    background-color: #fff;
-    border-radius: 5px;
-    padding: 20px;
-    text-align: center;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.review-modal input, .review-modal select, .review-modal textarea {
-    padding: 10px;
-    width: 50%;
-    margin: 10px;
-    border-radius: 5px;
-    border: 1px solid rgb(231, 231, 231);
-    outline: none;
+        height: fit-content;
+        padding: 20px;
+        margin: 0 auto;
 }
 
 
-.review-modal .close-modal{
-    position: absolute;
-    top: 0;
-    right: 0;
-    color: gray;
-    padding: 5px 8px;
-    border-color: #80808029;
-    background-color: #e5e5e5;
-    box-shadow: 0px 3px 3px #00000061;
-}
+// .login-form form {
+//     width: 50%;
+//     height: fit-content;
+//     background-color: #fff;
+//     border-radius: 5px;
+//     padding: 20px;
+//     text-align: center;
+//     align-items: center;
+//     justify-content: space-around;
+// }
 
-    .close-modal:hover {
-        background-color: #b4b4b4;
-        color: white;
-        box-shadow: 1px 9px 7px 0px #c5bdbd;
-    }
+// .review-modal input, .review-modal select, .review-modal textarea {
+//     padding: 10px;
+//     width: 50%;
+//     margin: 10px;
+//     border-radius: 5px;
+//     border: 1px solid rgb(231, 231, 231);
+//     outline: none;
+// }
+
+
+// .review-modal .close-modal{
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     color: gray;
+//     padding: 5px 8px;
+//     border-color: #80808029;
+//     background-color: #e5e5e5;
+//     box-shadow: 0px 3px 3px #00000061;
+// }
+
+//     .close-modal:hover {
+//         background-color: #b4b4b4;
+//         color: white;
+//         box-shadow: 1px 9px 7px 0px #c5bdbd;
+//     }
