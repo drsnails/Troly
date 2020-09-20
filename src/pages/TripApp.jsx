@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Route, Router, Switch, withRouter } from 'react-router-dom'
 import { loadTrip, addTrip } from '../store/actions/tripActions'
-import { showModal } from '../store/actions/modalActions'
+import { closeModal, showModal } from '../store/actions/modalActions'
 // import { TripRoute } from '../cmps/TripRoute'
 import { tripService } from '.././services/tripService'
 import { TripAssembly } from '../cmps/TripAssembly/TripAssembly'
@@ -11,7 +11,6 @@ import { TripRoute } from '../cmps/TripRoute/TripRoute'
 import { utils } from '../services/utils'
 import { logDOM } from '@testing-library/react'
 // import locationCevtorRed from 'https://res.cloudinary.com/roidinary/image/upload/v1600377967/locationVectorRed_vzufx4.png'
-
 
 class _TripApp extends Component {
 
@@ -111,7 +110,7 @@ class _TripApp extends Component {
                     </Route>
                     <Route path="/trip/:id/tripassembly">
                         <TripNavBar tripId={trip._id} />
-                        <TripAssembly trip={trip} updateTripAct={this.updateTripAct} showModal={this.props.showModal}></TripAssembly>
+                        <TripAssembly trip={trip} updateTripAct={this.updateTripAct} showModal={this.props.showModal} closeModal={this.props.closeModal}></TripAssembly>
                     </Route>
                 </Switch>
                 <p>{trip.destinations[0].name}</p>
@@ -129,6 +128,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     loadTrip,
     showModal,
+    closeModal,
     addTrip
 }
 export const TripApp = connect(mapStateToProps, mapDispatchToProps)(withRouter(_TripApp))

@@ -1,5 +1,20 @@
 .assembly-container {
     color: $clr12;
+    .paging-assembly {
+        display: flex;
+        width: 15%;
+        margin: 0 auto;
+        justify-content: space-between;
+        align-items: center;
+
+        div {
+            background-color: $clr9;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    } 
 }
 
 .trip-assembly-main {
@@ -7,6 +22,8 @@
     position: relative;
     margin: 0 auto;
     display: grid;
+    // overflow-y: scroll;
+
     grid-template-columns: repeat(7, minmax(100px, 1fr));
     // grid-template-rows: repeat(35);
 
@@ -59,6 +76,8 @@
         .activitie-assembly:not(.literal-day) {
             background-color: rgb(165, 192, 149);
             border-radius: 10px;
+            box-shadow: 0.4px -0.4px 1.9px black;
+
             cursor: pointer;
         }
         .literal-day {
@@ -73,7 +92,7 @@
     font-size: 1rem;
     margin: 0 auto;
     max-width: 85vw;
-    background-color:#61aff86b;
+    background-color: #61aff86b;
     // box-shadow: -0.05px -0.05px 0 0px black;
 
     height: 1.6rem;
@@ -114,5 +133,22 @@
         // border-color: t;
         border-width: 1px;
         border-radius: 4px;
+    }
+}
+
+.edit-attraction {
+    select:required:invalid {
+        color: gray;
+    }
+    option[value=""][disabled] {
+        display: none;
+    }
+    option {
+        color: black;
+    }
+    align-items: center;
+    > *:not(label) {
+        min-width: 50%;
+        margin-bottom: 0.85rem;
     }
 }
