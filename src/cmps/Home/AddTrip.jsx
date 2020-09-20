@@ -29,8 +29,7 @@ class _AddTrip extends Component {
             newtrip.endDate = new Date(Date.now() + 1 * 1000 * 60 * 60 * 24)
         }
         let location = this.getRandomLatLng()
-        newtrip.location = location
-
+        newtrip.location = location;
         this.setState({
             destinations: [...this.state.destinations, newtrip],
             currTrip: {
@@ -40,7 +39,7 @@ class _AddTrip extends Component {
             }
         })
     }
-
+    
     onSaveDestination = async (ev) => {
         ev.preventDefault();
         if (this.state.currTrip.name) await this.onSetDestinations(ev)

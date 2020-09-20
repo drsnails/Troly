@@ -13,12 +13,9 @@ export function RouteTimeLinePreview({ destination, idx, isLast, changeOrder }) 
                 {<i className={`fas fa-chevron-circle-up  trips-pagination trips-pagination-forward ${idx === 0 ? 'visi-none' : ''}`} onClick={() => changeOrder(idx, true)}></i>}
                 {<i className={`fas fa-chevron-circle-down  trips-pagination trips-pagination-forward ${isLast ? 'visi-none' : ''}`} onClick={() => changeOrder(idx, false)}></i>}
                 <div className="route-time-line-context flex align-center ">
-                    <div className="time-line-pagination">
-                    </div>
                     <div className={`index-ball dest-${idx} flex align-center justify-center `} >{idx + 1}</div>
                     <div>{destination.name}</div>
-                    {/* <div>{utils.calculateDays(destination.startDate, destination.endDate)-1} Nights</div> */}
-                    <div>{new Date(destination.startDate).getDate()} {new Date(destination.endDate).getDate()} </div>
+                    <div>{utils.calculateDays(destination.startDate, destination.endDate) - 1} Nights</div>
                 </div>
             </div>
             { !isLast && <div className="line"></div>}
