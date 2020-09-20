@@ -3,7 +3,10 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { LoginSignupPage } from '../../pages/LoginSignupPage';
 import { closeModal, showModal } from '../../store/actions/modalActions'
+import { closeMsg, showMsg } from '../../store/actions/msgActions';
 import { EditActivity } from '../TripAssembly/EditActivity';
+import { AddReview } from '../tripReviews/AddReview';
+
 
 class _Modal extends React.Component {
     state = {
@@ -31,10 +34,16 @@ class _Modal extends React.Component {
                 dynamicCmp = <EditActivity props={this.props.modal.props} />
                 nameToDisplay = 'Edit activity'
                 break
+            case 'add-review':
+                console.log(this.props);
+                dynamicCmp = <AddReview props={this.props.modal.props.addReview} showMsg={this.props.showMsg}
+                closeMsg={this.props.closeMsg} closeModal={this.closeModal} />
+                nameToDisplay = 'Add Review'
+                break
             default:
                 dynamicCmp = <div>proplem loading modal</div>
         }
-        this.setState({ dynamicCmp,nameToDisplay })
+        this.setState({ dynamicCmp, nameToDisplay })
 
     }
     handleClick = (cmp) => {
@@ -53,6 +62,7 @@ class _Modal extends React.Component {
 
     render() {
         const showLoginSignup = this.state.curCmp === 'login' || this.state.curCmp === 'signup' ? true : false;
+        console.log(this.state.dynamicCmp);
         return (
             <div className={`modal-screen flex align-center justify-center ${this.props.modal.isShown ? '' : 'hide'}`} onKeyDown={this.checkKey} onMouseDown={this.closeModal}>
                 <div className={`modal-container`} onMouseDown={(ev) => ev.stopPropagation()} >
@@ -68,11 +78,14 @@ class _Modal extends React.Component {
 }
 const mapStateToProps = state => {
     return {
-        modal: state.modalReducer
+        modal: state.modalReducer,
+        msg: state.msgReducer.msg
     }
 }
 const mapDispatchToProps = {
     closeModal,
-    showModal
+    showModal,
+    showMsg,
+    closeMsg
 }
 export const Modal = connect(mapStateToProps, mapDispatchToProps)(withRouter(_Modal))

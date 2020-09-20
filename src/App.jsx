@@ -10,6 +10,9 @@ import { UserTrips } from './pages/UserTrips';
 import { Modal } from './cmps/MainCmps/Modal';
 
 import '../src/scss/main.scss'
+import { TripDetails } from './pages/TripDetails';
+import { ErrorMsg } from './cmps/MainCmps/ErrorMsg';
+
 
 
 export function App() {
@@ -22,7 +25,8 @@ export function App() {
            <Modal/>
         <Switch>
           <Route component={LoginSignupPage} path='/lognsignup' />
-          <Route component={TripApp} path='/trip/:id/' />
+          <Route component={TripApp} path='/trip/:id/:triproute' />
+          <Route component={TripDetails} path='/trip/:id/' />
           <Route component={UserTrips} path='/user/:id' />
           <Route component={TripStock} path='/trip'/>
           <Route component={About} path='/about' />

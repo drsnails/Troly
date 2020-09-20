@@ -20,6 +20,7 @@ class _MainNavBar extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
+        if (this.props.location.pathname !== prevProps.location.pathname) this.backgroundChanged()
         if (this.state.loggedInUser === this.props.usersData.loggedinUser) return
         this.setState({ loggedInUser: this.props.usersData.loggedinUser })
     }
@@ -32,13 +33,12 @@ class _MainNavBar extends Component {
 
 
     backgroundChanged = () => {
-        if (window.pageYOffset >= 80 || this.props.location.pathname !== '/') {
+        const path = this.props.location.pathname.match('/')
+        const match = path && this.props.location.pathname === path[0]
+        if (window.pageYOffset >= 80 || !match) {
             this.setState({ navBar: true })
         } else { this.setState({ navBar: false }) }
     }
-
-
-
 
     render() {
         return (

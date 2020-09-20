@@ -7,16 +7,17 @@
     list-style-type: none;
     grid-gap: 15px;
     width: 100%;
+
     &.slider{
         grid-template-columns: repeat(auto-fit, 400px);
         padding: 0;
-        height: 100%;
 
     }
 
 }
 
 .trip-preview {
+    cursor: pointer;
     display: flex;
     color: rgb(63, 62, 62);
     flex-direction: column;
@@ -30,7 +31,7 @@
 
     .trip-preview-details{
         background-color: white;
-        padding: 20px 0;
+        padding: 20px;
         font-size: 1.3rem;
         h3{
             margin-top:0;
@@ -53,6 +54,14 @@
             
         }
 
+    }
+    &.details{
+        pointer-events: none;
+        width: 100%;
+        box-shadow: none;
+        .img-wraper{
+            height: 350px;
+        }
     }
 
 

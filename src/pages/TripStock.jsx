@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { TripFilter } from '../cmps/Home/TripFilter';
 import { TripList } from '../cmps/Home/TripList';
+import { showModal } from '../store/actions/modalActions';
 import { loadTrips } from '../store/actions/tripActions';
 
 
@@ -11,6 +12,7 @@ class _TripStock extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props);
         this.props.loadTrips()
     }
 
@@ -32,7 +34,7 @@ class _TripStock extends Component {
             <div>
                 <h2>All Trips</h2>
                 <TripFilter onsetFilter={this.onsetFilter} />
-                <TripList trips={trips} />
+                <TripList showModal={this.props.showModal} trips={trips} />
             </div>
         )
     }
@@ -46,7 +48,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    loadTrips
+    loadTrips,
+    showModal
 }
 
 export const TripStock = connect(mapStateToProps, mapDispatchToProps)(_TripStock);

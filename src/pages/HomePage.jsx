@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
 import { AddTrip } from '../cmps/Home/AddTrip';
-import { TripFilter } from '../cmps/Home/TripFilter';
-import { TripList } from '../cmps/Home/TripList';
 import { TripSlider } from '../cmps/Home/TripSlider';
 import { loadTrips } from '../store/actions/tripActions'
 
@@ -14,8 +11,6 @@ class _HomePage extends Component {
 
     async componentDidMount() {
         await this.props.loadTrips()
-
-
     }
 
     // getTripsForDisplay = () => {
@@ -42,7 +37,6 @@ class _HomePage extends Component {
                         <h3>Simply Travel</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque nesciunt omnis eius, ducimus id eaque saepe et corporis reiciendis, enim maxime alias sint necessitatibus ut repudiandae totam quo sed adipisci.</p>
 
-                        {/* {<TripList trips={this.props.trips} /> || <p>Loading Trips . . .</p>} */}
                     </div>
                 </div>
             </div>

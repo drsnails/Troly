@@ -1,32 +1,54 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { utils } from '../../services/utils'
 
+import React, { Component } from 'react'
 
-export function TripPreview({ trip, img, addClass}) {
+class _TripPreview extends Component {
+
+    componentDidMount() {
+    }
 
 
-    function getTripPrice(activities) {
+    handleClick = () => {
+        if (this.props.history.location.pathname === '/') {
+            this.props.history.push(`/trip/${this.props.trip._id}/triproute`)
+        }
+        else {
+            this.props.history.push(`/trip/${this.props.trip._id}`)
+        }
+
+    }
+
+    getTripPrice = (activities) => {
         let price = activities.reduce((acc, currValue) => {
             acc = acc + currValue.price.amount
             return acc
         }, 0)
         return price
     }
-    const price = getTripPrice(trip.activities)
-    const days = utils.calculateDays(trip.destinations[0].startDate, trip.destinations[trip.destinations.length - 1].endDate)
-    return (
-        <div className={'trip-preview flex column ' + (addClass? addClass : '') }>
-            <Link to={`/trip/${trip._id}/triproute`} >
-                <div className="img-wraper"> 
-                    <img src={img} alt=""/>
+
+    render() {
+        const { trip, img, addClass } = this.props
+        if (!trip) return <p>Loading Trip . . .</p>
+        const price = this.getTripPrice(trip.activities)
+        const days = utils.calculateDays(trip.destinations[0].startDate, trip.destinations[trip.destinations.length - 1].endDate)
+        const style = (this.props.style ? this.props.style : '')
+
+        return (
+            <div style={{ pointerEvents: (style.pointerEvents ? style.pointerEvents : 'inherit') }} onClick={this.handleClick} className={'trip-preview flex column ' + (addClass ? addClass : '')} >
+                < div className="img-wraper" >
+                    <img src={img} alt="" />
                 </div>
                 <div className="trip-preview-details">
                     <h3>{trip.destinations[0].name}</h3>
                     <p>{days} days</p>
                     <p>Price:  ${price}</p>
                 </div>
-            </Link>
-        </div>
-    )
+            </div >
+        )
+    }
 }
+
+
+
+export const TripPreview = withRouter(_TripPreview)

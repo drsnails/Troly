@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import { addTrip } from '../../store/actions/tripActions'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import { ErrorMsg } from '../MainCmps/ErrorMsg';
+import { showMsg, closeMsg } from '../../store/actions/msgActions';
 
 
 
@@ -19,7 +20,7 @@ class _AddTrip extends Component {
             endDate: '',
 
         },
-        destinations: ''
+        destinations: '',
     }
 
     onSetDestinations = (ev) => {
@@ -42,10 +43,13 @@ class _AddTrip extends Component {
             }
         })
     }
-    
+
     onSaveDestination = async (ev) => {
         ev.preventDefault();
-        if (this.state.currTrip.name) await this.onSetDestinations(ev)
+        if (!this.state.destinations.length) {
+            this.props.showMsg('At least one destination must be added')
+            return
+        }
         const trip = {
             createdBy: this.props.loggedInUser || 'Guest',
             imgUrl: utils.getRandomPic(),
@@ -118,6 +122,7 @@ class _AddTrip extends Component {
                             id="add-dest-input"
                             value={this.state.currTrip.name}
                             required
+                            onInvalid={() => { console.log('invalid'); }}
                             onChange={this.handleInput}
                         />
                     </div>
@@ -149,7 +154,8 @@ class _AddTrip extends Component {
                             />
                         </div>
                     </div>
-                    <button className="styled-button" onSubmit={this.onSetDestinations}>Add next destination</button>
+                    <ErrorMsg />
+                    <button className="styled-button" onSubmit={this.onSetDestinations}>Add destination</button>
                     {this.state.destinations.length ? <ol className="trip-list-add-form flex column">
                         {this.state.destinations.map(dest => <li key={utils.makeId()} className="flex Justify-between">
                             <p>{dest.name}</p>
@@ -159,7 +165,7 @@ class _AddTrip extends Component {
                             </div>
                         </li>)}
                     </ol> : ''}
-                    <button className="styled-button" onClick={this.onSaveDestination}>Save changes</button>
+                    <button className="styled-button" onClick={this.onSaveDestination}>Ready To Plan!</button>
                 </form>
                 <div className="add-dest-img-wraper">
                     <img src="https://images.unsplash.com/photo-1484804959297-65e7c19d7c9f?ixlib=rb-1.2.1" alt="" />
@@ -178,7 +184,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    addTrip
+    addTrip,
+    showMsg,
+    closeMsg
 }
 
 export const AddTrip = connect(mapStateToProps, mapDispatchToProps)(withRouter(_AddTrip));
