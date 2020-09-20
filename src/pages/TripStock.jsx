@@ -31,7 +31,6 @@ class _TripStock extends Component {
         return (
             <div>
                 <h2>All Trips</h2>
-
                 <TripFilter onsetFilter={this.onsetFilter} />
                 <TripList trips={trips} />
             </div>

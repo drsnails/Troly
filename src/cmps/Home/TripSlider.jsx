@@ -1,6 +1,6 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Flip, EffectFade, Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import SwiperCore, { EffectCoverflow, Autoplay, EffectFade, Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 import 'swiper/swiper-bundle.css';
 import 'swiper/components/effect-fade/effect-fade.scss';
@@ -10,7 +10,7 @@ import { utils } from '../../services/utils';
 
 
 
-SwiperCore.use([EffectFade, Navigation, Pagination, Scrollbar, A11y]);
+SwiperCore.use([EffectCoverflow, Autoplay, EffectFade, Navigation, Pagination, Scrollbar, A11y]);
 
 
 
@@ -18,8 +18,8 @@ const coverflow = {
     rotate: 50,
     stretch: 0,
     depth: 100,
-    modifier: 1,
-    slideShadows: true,
+    modifier: 2,
+    // slideShadows: true,
 }
 
 export function TripSlider({ trips }) {
@@ -27,23 +27,19 @@ export function TripSlider({ trips }) {
 
     return (
         <Swiper
-            spaceBetween={200}
-            effect="coverflow"
+            spaceBetween={20}
+            effect="fade"
             slidesPerView={1}
             navigation
-            coverflowEffect
-            rotate={100}
-            stretch={500}
-            depth={200}
-            modifier={2} 
+            rotate={50}
+            stretch={0}
+            depth={100}
+            modifier={1}
             centeredSlides={ true}
-            // slidesPerView={'auto'}
-            // autoplay={true}
-             
-
+            autoplay={true}
+            delay={2500}
 
         // pagination={{ clickable: true }}
-        // scrollbar={{ draggable: true }}
         >
 
 

@@ -30,21 +30,20 @@ class _HomePage extends Component {
             <div className="home-page ">
                 {/* {this.getTripPrice()} */}
                 <div className="home-page-hero" >
-                    <section className="slideShow">
-                            <TripSlider trips={this.props.trips} />
-                    </section>
-                </div>  
+                </div>
+                <section className="slideShow">
+                    <TripSlider trips={this.props.trips.slice(0, 4)} />
+                </section>
                 <div className="main-container main-home-page">
 
                     <AddTrip />
-                    <h2>Most Popular Trips</h2>
-                    <div>
-                        {/* <i className="fas fa-chevron-circle-right  trips-pagination trips-pagination-forward"></i> */}
-                        {<TripList trips={this.props.trips} /> || <p>Loading Trips . . .</p>}
-                        {/* <i className="fas fa-chevron-circle-left trips-pagination trips-pagination-backward"></i> */}
-                    </div>
+                    <div className="description-section">
+                        <h1> Trolly</h1>
+                        <h3>Simply Travel</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque nesciunt omnis eius, ducimus id eaque saepe et corporis reiciendis, enim maxime alias sint necessitatibus ut repudiandae totam quo sed adipisci.</p>
 
-                    <h2>All Trips</h2>
+                        {/* {<TripList trips={this.props.trips} /> || <p>Loading Trips . . .</p>} */}
+                    </div>
                 </div>
             </div>
         )
