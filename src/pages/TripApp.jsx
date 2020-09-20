@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Route, Router, Switch, withRouter } from 'react-router-dom'
 import { loadTrip, addTrip } from '../store/actions/tripActions'
-import { showModal } from '../store/actions/modalActions'
+import { closeModal, showModal } from '../store/actions/modalActions'
 // import { TripRoute } from '../cmps/TripRoute'
 import { tripService } from '.././services/tripService'
 import { TripAssembly } from '../cmps/TripAssembly/TripAssembly'
@@ -10,13 +10,14 @@ import { TripNavBar } from '../cmps/TripApp/TripNavBar'
 import { TripRoute } from '../cmps/TripRoute/TripRoute'
 import { utils } from '../services/utils'
 import { logDOM } from '@testing-library/react'
+import { Chat } from '../cmps/TripApp/Chat'
 // import locationCevtorRed from 'https://res.cloudinary.com/roidinary/image/upload/v1600377967/locationVectorRed_vzufx4.png'
-
 
 class _TripApp extends Component {
 
     state = {
-        trip: ''
+        trip: '',
+        chatOpen:false
     }
 
     async componentDidMount() {
@@ -98,6 +99,10 @@ class _TripApp extends Component {
         })
     }
 
+    toggleChat=()=>{
+        this.setState({chatOpen:!this.state.chatOpen})
+    }
+
     render() {
         const { trip } = this.state
         if (!trip) return <div>Loading....</div>
@@ -111,10 +116,11 @@ class _TripApp extends Component {
                     </Route>
                     <Route path="/trip/:id/tripassembly">
                         <TripNavBar tripId={trip._id} />
-                        <TripAssembly trip={trip} updateTripAct={this.updateTripAct} showModal={this.props.showModal}></TripAssembly>
+                        <TripAssembly trip={trip} updateTripAct={this.updateTripAct} showModal={this.props.showModal} closeModal={this.props.closeModal}></TripAssembly>
                     </Route>
                 </Switch>
-                <p>{trip.destinations[0].name}</p>
+                <Chat chatOpen={this.state.chatOpen} trip={this.state.trip}/>
+                <button className="chat-button styled-button" onClick={this.toggleChat}>C</button>
             </div >
         )
     }
@@ -129,6 +135,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     loadTrip,
     showModal,
+    closeModal,
     addTrip
 }
 export const TripApp = connect(mapStateToProps, mapDispatchToProps)(withRouter(_TripApp))

@@ -10,6 +10,7 @@ export const utils = {
     getTimeDayStr,
     getRandomPic,
     getRandomInt,
+    getIsoTime
 }
 
 function makeId(length = 5) {
@@ -82,6 +83,12 @@ function getRandomInt(min, max) {
 function getRandomPic() {
     const imgIdx = getRandomInt(0, imgs.length - 1)
     return imgs[imgIdx]
+}
+
+function getIsoTime(timeStamp) {
+    let time = new Date(timeStamp);
+    time.setMinutes(time.getMinutes() - time.getTimezoneOffset());
+    return time.toISOString().slice(0, 16)
 }
 
 

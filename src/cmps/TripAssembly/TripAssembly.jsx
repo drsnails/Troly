@@ -26,13 +26,12 @@ export class TripAssembly extends Component {
         const tripLength = utils.calculateDays(startDate, endDate)
         await this.setState({ tripLength, startDate, endDate, activities })
         await this.loadDaysMat()
-        await this.setState({minDestinations: this.getMinDestinations()}, ()=>console.log(this.state))
-        
+        await this.setState({ minDestinations: this.getMinDestinations() }, () => console.log(this.state))
 
     }
 
     loadDaysMat = () => {
-        const { activities, destinations } = this.props.trip;
+        const { activities } = this.props.trip;
         const actsDaysMap = this.mapActsToDays(activities);
         const actsToDisplay = actsDaysMap.slice(this.state.page * 7, this.state.page * 7 + 7)
         const destTimeStamp = actsToDisplay[0][1][0].at
@@ -52,8 +51,9 @@ export class TripAssembly extends Component {
             for (let j = 0; j < currDayActs.length; j++) {
 
                 const act = currDayActs[j]
-                act.col = col
                 let row = this.getRowIdx(act.at)
+                act.col = col
+                act.row = row
                 if (!act.freeDay) daysMat[row][col] = act
             }
         }
@@ -75,6 +75,7 @@ export class TripAssembly extends Component {
         if (prevProps.trip === this.props.trip) return
         this.setState({ trip: { ...this.props.trip } }, () => {
             this.loadDaysMat()
+            this.setState({ minDestinations: this.getMinDestinations() })
         })
     }
 
@@ -94,11 +95,28 @@ export class TripAssembly extends Component {
         for (let i = 0; i < 7; i++) {
 
             var col = this.getCol(mat, i)
-            actPreviews.push(<ActivityList onEdit={this.onEdit} onRemoveAct={this.onRemoveAct} getRowIdx={this.getRowIdx} key={utils.makeId()} day={col} />
+            actPreviews.push(<ActivityList destinations={this.props.trip.destinations} onEdit={this.onEdit} onRemoveAct={this.onRemoveAct} getRowIdx={this.getRowIdx} key={utils.makeId()} day={col} />
             )
         }
 
         return actPreviews
+    }
+
+    isOccTimeSlot = (activitie) => {
+        const { activities } = this.state
+        const startTime = activitie.at
+        const endTime = startTime + activitie.duration * 30 * 60 * 1000
+        for (let i = 0; i < activities.length; i++) {
+            const act = activities[i]
+            if (activitie.id && activitie.id === act.id) continue
+
+            if (((startTime > act.at) && (startTime < act.at + act.duration * 30 * 60 * 1000)) ||
+                ((endTime > act.at) && (endTime < act.at + act.duration * 30 * 60 * 1000))) {
+                return true
+            }
+
+        }
+        return false
     }
 
 
@@ -128,7 +146,7 @@ export class TripAssembly extends Component {
     }
 
     getCol = (mat, col) => {
-        const MatColumn = (arr, n) => arr.map(x => x[n]);
+        const MatColumn = (_mat, n) => _mat.map(x => x[n]);
         return MatColumn(mat, col);
     }
 
@@ -155,7 +173,7 @@ export class TripAssembly extends Component {
 
     }
     onEdit = (act) => {
-        this.props.showModal('editActivity', { saveAct: this.saveAct, act })
+        this.props.showModal('editActivity', { saveAct: this.saveAct, act, isOccTimeSlot: this.isOccTimeSlot, destinations: this.props.trip.destinations })
     }
 
 
@@ -184,7 +202,7 @@ export class TripAssembly extends Component {
                 isSameEndDay = true
             }
             lastEndDate = destination.endDate
-            let totalDays = utils.calculateDays(destination.startDate, destination.endDate) + 1
+            let totalDays = utils.calculateDays(destination.startDate, destination.endDate)
             let totaHalflDays = (isSameStartDay) ? totalDays * 2 - 1 : totalDays * 2
             totaHalflDays = (isSameEndDay) ? totaHalflDays - 1 : totaHalflDays
             totaHalflDays = (totaHalflDays > freeDaysLeft) ? freeDaysLeft : totaHalflDays
@@ -233,28 +251,45 @@ export class TripAssembly extends Component {
                 return (_act.id === act.id) ? act : _act
             })
         } else {
+            act.id = utils.makeId()
             activities.push(act)
         }
+        this.props.closeModal()
 
         this.props.updateTripAct(activities)
         this.setState({ activities })
+        this.loadDaysMat()
+    }
+
+    onTogglePage = async (direction) => {
+        const { tripLength, page } = this.state
+        let pageCount = Math.ceil(tripLength / 7)
+        let newPage = (direction = 'next') ? (page + 1) % pageCount : (page - 1) % pageCount
+        await this.setState({page: newPage})
+        await this.loadDaysMat()
+        this.setState({ minDestinations: this.getMinDestinations() })
     }
 
 
-
     render() {
-        const { daysMat, activities, minDestinations } = this.state
+        const { daysMat, activities, minDestinations, tripLength } = this.state
         if (!daysMat || !minDestinations) return <div>Loading...</div>
         // this.getLinearTripDays()
         const acts = this.renderActPreviews(daysMat)
+
         return (
             <div className="assembly-container">
+                <section className="paging-assembly">
+                    <div onClick={()=>this.onTogglePage('prev')}>{'<'}</div>
+                    <span>{this.state.page + 1}</span>
+                    <div onClick={()=>this.onTogglePage('next')}>{'>'}</div>
+                </section>
                 <DestinationsHeader destinations={minDestinations} />
                 <div className={'trip-assembly-main full'}>
                     <DayTimeLine />
                     {acts}
                 </div >
-                <button className='editActivity' onClick={() => this.props.showModal('editActivity', { saveAct: this.saveAct, act: null })}>add activity</button>
+                <button className='editActivity' onClick={() => this.props.showModal('editActivity', { saveAct: this.saveAct, isOccTimeSlot: this.isOccTimeSlot, act: null, destinations: this.props.trip.destinations })}>add activity</button>
             </div>
         )
     }
