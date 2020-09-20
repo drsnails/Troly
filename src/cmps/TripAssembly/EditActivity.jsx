@@ -10,6 +10,7 @@ export class EditActivity extends Component {
             duration: '',
             notes: '',
             price: '',
+            // destination: '',
             id: null
         }
 
