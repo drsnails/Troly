@@ -42,7 +42,7 @@ class _AddTrip extends Component {
             }
         })
     }
-
+    
     onSaveDestination = async (ev) => {
         ev.preventDefault();
         if (this.state.currTrip.name) await this.onSetDestinations(ev)

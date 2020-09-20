@@ -24,10 +24,10 @@ export class Login extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.onSubmit} >
+            <form className="login-form flex align-center justify-center column" onSubmit={this.onSubmit} >
                 <input className="styled-input" type="email" placeholder="email" name="email"></input>
                 <input className="styled-input" type="password" placeholder="password" name="password"></input>
-                <button>Login</button>
+                <button className="styled-button">Login</button>
                 <p>not a user? please <span onClick={()=>this.props.handleClick('signup')}>sign up</span></p>
                 {this.state.msg && <p>{this.state.msg}</p>}
             </form>

@@ -248,7 +248,7 @@ export class TripAssembly extends Component {
         // this.getLinearTripDays()
         const acts = this.renderActPreviews(daysMat)
         return (
-            <div>
+            <div className="assembly-container">
                 <DestinationsHeader destinations={minDestinations} />
                 <div className={'trip-assembly-main full'}>
                     <DayTimeLine />
