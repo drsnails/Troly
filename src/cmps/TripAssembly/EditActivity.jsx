@@ -52,7 +52,7 @@ export class EditActivity extends Component {
             <form onSubmit={this.onSaveAct}>
                 <input placeholder="name" name="name" value={this.state.activitie.name} onChange={this.handleChange}></input>
                 <label htmlFor="date-activity-input">date</label>
-                <input type="datetime-local" name="at" onChange={this.handleChange} value={this.state.activitie.at} required id="date-activity-input" />
+                <input type="datetime-local" name="at" step="3600" onChange={this.handleChange} value={this.state.activitie.at} required id="date-activity-input" />
                 <label htmlFor="start-time-activity-input">time</label>
                 {/* <input type="time" min="07:00" onChange={this.handleChange} max="24:00" step={`${30 * 60}`} name="time" value={this.state.activitie.time} required id="start-time-activity-input" /> */}
                 <input placeholder="duration" type="number" name="duration" value={this.state.activitie.duration} onChange={this.handleChange}></input>

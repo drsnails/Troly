@@ -302,21 +302,21 @@ const trips = [
         imgUrl: 'http//vkjbfcd.jpg',
         destinations: [
             {
-                id: 'ksndv8',
+                id: 'ksnd3v8',
                 name: 'nepal',
                 startDate: 1600236000000 + 13 * 24 * 60 * 60 * 1000,
                 endDate: 1600466400000 + 13 * 24 * 60 * 60 * 1000,
                 location: { lat: 28.3949, lng: 84.1240 }
             },
             {
-                id: 'ksndv8',
+                id: 'ksn4dv8',
                 name: 'Butan',
                 startDate: 1600466400000 + 13 * 24 * 60 * 60 * 1000,
                 endDate: 1600466400000 + 16 * 24 * 60 * 60 * 1000,
                 location: { lat: 33.3949, lng: 94.1240 }
             },
             {
-                id: 'ksndv8',
+                id: 'ksnd5v8',
                 name: 'Mongolia',
                 startDate: 1600466400000 + 16 * 24 * 60 * 60 * 1000 ,
                 endDate: 1600466400000 + 19 * 24 * 60 * 60 * 1000,
