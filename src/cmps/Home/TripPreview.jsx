@@ -15,7 +15,6 @@ export function TripPreview({ trip, img, addClass}) {
     }
     const price = getTripPrice(trip.activities)
     const days = utils.calculateDays(trip.destinations[0].startDate, trip.destinations[trip.destinations.length - 1].endDate)
-    console.log(trip)
     return (
         <div className={'trip-preview flex column ' + (addClass? addClass : '') }>
             <Link to={`/trip/${trip._id}/triproute`} >

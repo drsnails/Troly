@@ -39,10 +39,10 @@ margin-top: 250px;
 }
 
 .slideShow{
-    height: 550px;
-    width: 800px;
+    height: 550px;;
+    width: 600px;
     position: absolute;
-    right: 2%;
+    right: 5%;
     top: 140px;
     margin-bottom:20px ;
 }
@@ -66,7 +66,28 @@ margin-top: 250px;
     color: rgb(238, 239, 255);
     font-weight: bold;
     font-size: 1.5rem;
-    // background-color: rgb(63, 63, 63);
     padding: 10px;
     border-radius: 100px;
+}
+
+.description-section{
+    border-radius: 10px;
+    position: absolute;
+    width: 600px;
+    padding: 10px;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    top: 368px;
+    background: linear-gradient(-182deg, #ffffff1c, #5c585814);
+    letter-spacing: 1px;
+    margin: 0 60px;
+    text-overflow: clip;
+color: white;
+    h3{
+        padding-left: 50px;
+    }
+    p{
+        color: gray;
+        padding-left: 110px;
+    }
 }

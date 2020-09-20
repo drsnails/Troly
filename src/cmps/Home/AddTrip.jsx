@@ -17,6 +17,7 @@ class _AddTrip extends Component {
             name: '',
             startDate: '',
             endDate: '',
+
         },
         destinations: ''
     }
@@ -24,12 +25,14 @@ class _AddTrip extends Component {
     onSetDestinations = (ev) => {
         ev.preventDefault()
         const newtrip = this.state.currTrip
+        newtrip.name = newtrip.name.toLowerCase()
         if (!this.state.currTrip.startDate && !this.state.currTrip.endDate) {
             newtrip.startDate = Date.now()
             newtrip.endDate = new Date(Date.now() + 1 * 1000 * 60 * 60 * 24)
         }
         let location = this.getRandomLatLng()
-        newtrip.location = location;
+        newtrip.location = location
+        newtrip.id = utils.makeId()
         this.setState({
             destinations: [...this.state.destinations, newtrip],
             currTrip: {
@@ -44,8 +47,21 @@ class _AddTrip extends Component {
         ev.preventDefault();
         if (this.state.currTrip.name) await this.onSetDestinations(ev)
         const trip = {
+            createdBy: this.props.loggedInUser || 'Guest',
+            imgUrl: utils.getRandomPic(),
+            activities: [],
             destinations: this.state.destinations
         }
+        if (this.props.loggedInUser) {
+            trip.members = [
+                {
+                    _id: this.props.loggedInUser._id,
+                    fullName: this.props.loggedInUser.name,
+                    imgUrl: '',
+                }
+            ]
+        }
+        else trip.members = []
         const newTrip = await this.props.addTrip(trip)
         this.props.history.push(`/trip/${newTrip._id}/triproute`)
     }
@@ -157,7 +173,7 @@ class _AddTrip extends Component {
 
 const mapStateToProps = state => {
     return {
-
+        loggedInUser: state.userReducer.loggedInUser
     }
 }
 
