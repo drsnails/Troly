@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
+import { utils } from '../../services/utils';
 
 export class EditActivity extends Component {
     state = {
         activitie: {
-            name: '',
+            name: 'nice place',
             at: '',
             time: '',
             labels: ['relax'],
-            duration: '',
+            duration: 1,
             notes: '',
             price: '',
-            // destination: '',
+            destination: '',
             id: null
         }
 
@@ -44,6 +45,7 @@ export class EditActivity extends Component {
         let datetime = new Date(activitie.at)
         activitie.at = datetime.getTime()
         activitie.price = {amount: activitie.price, currency: '$'}
+        // activitie.id = utils.makeId()
         saveAct(this.state.activitie)
     }
 
@@ -52,13 +54,15 @@ export class EditActivity extends Component {
         return (
             <form onSubmit={this.onSaveAct}>
                 <input placeholder="name" name="name" value={this.state.activitie.name} onChange={this.handleChange}></input>
-                <label htmlFor="date-activity-input">date</label>
+                {/* <label htmlFor="dest-input">destination</label> */}
+                <input placeholder="destination" name="destination" id="dest-input" value={this.state.activitie.destination} onChange={this.handleChange}></input>
+                {/* <label htmlFor="start-time-activity-input">time</label> */}
+                {/* <label htmlFor="date-activity-input">date</label> */}
                 <input type="datetime-local" name="at" step="3600" onChange={this.handleChange} value={this.state.activitie.at} required id="date-activity-input" />
-                <label htmlFor="start-time-activity-input">time</label>
                 {/* <input type="time" min="07:00" onChange={this.handleChange} max="24:00" step={`${30 * 60}`} name="time" value={this.state.activitie.time} required id="start-time-activity-input" /> */}
-                <input placeholder="duration" type="number" name="duration" value={this.state.activitie.duration} onChange={this.handleChange}></input>
+                <input placeholder="duration" placeholder="duration" type="number" name="duration" value={this.state.activitie.duration} onChange={this.handleChange}></input>
                 <textarea placeholder="notes" onChange={this.handleChange} name="notes" value={this.state.activitie.notes} ></textarea>
-                <input type="number" name="price" onChange={this.handleChange} placeholder="price" value={this.state.activitie.price}></input>
+                <input type="number" placeholder="price" name="price" onChange={this.handleChange} placeholder="price" value={this.state.activitie.price}></input>
                 <button onClick={this.onSaveAct}>Save</button>
             </form>
         )

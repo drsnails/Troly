@@ -171,6 +171,7 @@ export class TripAssembly extends Component {
         var { destinations } = this.props.trip
         const { actsToDisplay } = this.state
         destinations = this.destsWithActs(destinations, actsToDisplay)
+        console.log("getMinDestinations -> destinations", destinations)
 
         let lastEndDate;
         let freeDaysLeft = 14
@@ -233,11 +234,13 @@ export class TripAssembly extends Component {
                 return (_act.id === act.id) ? act : _act
             })
         } else {
+            act.id= utils.makeId()
             activities.push(act)
         }
 
         this.props.updateTripAct(activities)
         this.setState({ activities })
+        this.loadDaysMat()
     }
 
 
