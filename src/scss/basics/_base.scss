@@ -18,6 +18,11 @@ ul,li,p{
     list-style: none;
 }
 
+.ustyled-button{
+    border: 0;
+    background-color: transparent;
+}
+
 .styled-input {
     margin: 5px;
     outline: none;
@@ -51,13 +56,35 @@ ul,li,p{
 
 .dest-0 {
     background-color: $clr1 !important;
+     @include shadow($clr1)
+    
 }
 .dest-1 {
     background-color: $clr2;
+    @include shadow($clr2)
 }
 .dest-2 {
     background-color: $clr3;
+    @include shadow($clr3)
 }
 .dest-3 {
     background-color: $clr4;
+    @include shadow($clr4)
+}
+.dest-4 {
+    background-color: $clr5;
+    @include shadow($clr5)
+}
+.dest-5 {
+    background-color: $clr6;
+    @include shadow($clr6)
+}
+.dest-6 {
+    background-color: $clr7;
+    @include shadow($clr7)
+}
+// inset 0px -1px 7px -4px #350053, inset 0px 4px 5px #edceff;
+.styled-header{
+    background-color: $clr5;
+    box-shadow: inset 0px -1px 7px -4px darken($clr5, 68%), inset  0px 4px 5px lighten($clr5, 6%);
 }

@@ -3,8 +3,8 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { utils } from '../../services/utils';
 
 
-const API_KEY = 'AIzaSyBXIyfwpDtmz9fLAQI-MUqWuhQtc-GQYoo'
-// const API_KEY =''
+// const API_KEY = 'AIzaSyBXIyfwpDtmz9fLAQI-MUqWuhQtc-GQYoo'
+const API_KEY =''
 
 class _MapContainer extends React.Component {
     state = {
@@ -64,9 +64,10 @@ class _MapContainer extends React.Component {
 
     containerStyle = {
         position: 'relative',
-        width: '350px',
-        height: '250px',
-        margin: '0 auto 20px'
+        width: '450px',
+        height: '300px',
+        float:'right',
+        margin: '0 0 20px'
 
     }
 

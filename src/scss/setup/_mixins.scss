@@ -28,6 +28,9 @@
     background-color: $clr+$number;
     
 }
+@mixin shadow($clr) {
+    box-shadow: -1px 1px 6px -2px darken($clr, 68%), inset -2px 1px 5px lighten($clr, 6%);
+}
 
 
 
