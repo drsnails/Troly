@@ -17,7 +17,7 @@ class _Modal extends React.Component {
     }
     componentDidUpdate(prevProps, prevState) {
         const curCmp = this.props.modal.cmp
-        console.log(prevProps.modal.cmp, curCmp);
+        // console.log(prevProps.modal.cmp, curCmp);
         if (prevProps.modal.cmp === curCmp) return
         let dynamicCmp = '';
         let nameToDisplay = '';
@@ -62,7 +62,7 @@ class _Modal extends React.Component {
 
     render() {
         const showLoginSignup = this.state.curCmp === 'login' || this.state.curCmp === 'signup' ? true : false;
-        console.log(this.state.dynamicCmp);
+        // console.log(this.state.dynamicCmp);
         return (
             <div className={`modal-screen flex align-center justify-center ${this.props.modal.isShown ? '' : 'hide'}`} onKeyDown={this.checkKey} onMouseDown={this.closeModal}>
                 <div className={`modal-container`} onMouseDown={(ev) => ev.stopPropagation()} >

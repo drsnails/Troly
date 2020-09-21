@@ -71,22 +71,27 @@ margin-top: 250px;
 }
 
 .description-section{
+    font-family: ElMessiri;
     border-radius: 10px;
     position: absolute;
-    width: 600px;
-    padding: 10px;
-    font-size: 1.5rem;
-    line-height: 1.5rem;
-    top: 368px;
-    background: linear-gradient(-182deg, #ffffff1c, #5c585814);
+    width: 800px;
+    padding:0;
+    line-height:rem(40px);
+    top: 360px;
+    // background: linear-gradient(-182deg, #ffffff1c, #5c585814);
     letter-spacing: 1px;
+    font-style: italic;
     margin: 0 60px;
     text-overflow: clip;
-color: white;
+    color: white;
     h3{
-        padding-left: 50px;
+        font-size: rem(45px);
+        margin-bottom: 70px;
+
     }
     p{
+    font-size: rem(30px);
+        font-style: normal;
         color: gray;
         padding-left: 110px;
     }

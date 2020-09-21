@@ -33,10 +33,11 @@ class _HomePage extends Component {
 
                     <AddTrip />
                     <div className="description-section">
-                        <h1> Trolly</h1>
-                        <h3>Simply Travel</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque nesciunt omnis eius, ducimus id eaque saepe et corporis reiciendis, enim maxime alias sint necessitatibus ut repudiandae totam quo sed adipisci.</p>
-
+                        {/* <h1> Trolly</h1> */}
+                        <h3>Planning a trip has never been easier</h3>
+                        <p>Even if you can't fly now, doesn't mean you can't start planning</p>
+                        <p>Choose from our top rated planned trips </p>
+                        <p>or create your own plan  </p>
                     </div>
                 </div>
             </div>

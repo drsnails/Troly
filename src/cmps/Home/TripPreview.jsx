@@ -44,6 +44,19 @@ class _TripPreview extends Component {
                     <p>{days} days</p>
                     <p>Price:  ${price}</p>
                 </div>
+
+
+                {addClass === 'detals' &&
+                    <div>
+                        < div className="img-wraper" >
+                            <img src={img} alt="" />
+
+                        </div>
+                        <p>{days} days to <h3>{trip.destinations[0].name}</h3></p>
+                    </div>}
+
+
+
             </div >
         )
     }

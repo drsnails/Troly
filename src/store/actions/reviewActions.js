@@ -6,10 +6,11 @@ export const reviewActions = {
     addReview
 }
 
-function loadReviews(review) {
+function loadReviews(tripId) {
     return async dispatch => {
         try {
-            const reviews = await reviewService.query(review);
+            const reviews = await reviewService.query(tripId);
+            console.log(reviews);
             dispatch({ type: 'SET_REVIEWS', reviews });
 
         } catch (err) {

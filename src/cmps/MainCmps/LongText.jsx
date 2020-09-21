@@ -18,7 +18,7 @@ export class LongTxt extends React.Component {
         return (
             <p>
                 {(text.length < 100 || (isLongTxtShown && text.length > 100)) ? text : text.substring(0, 100) + ' . . .'}
-                {text.length > 100 && <button className="expend-description" onClick={this.onReadMore}>{this.state.isLongTxtShown ? 'Less' : 'More'}</button>}
+                {text.length > 100 && <button className=" styled-button expend-description" onClick={this.onReadMore}>{this.state.isLongTxtShown ? 'Less' : 'More'}</button>}
             </p >
         )
     }
