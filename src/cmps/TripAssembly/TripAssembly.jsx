@@ -104,14 +104,24 @@ export class TripAssembly extends Component {
 
     isOccTimeSlot = (activitie) => {
         const { activities } = this.state
-        const startTime = activitie.at
-        const endTime = startTime + activitie.duration * 30 * 60 * 1000
+        const currStartTime = activitie.at
+        
+        const currEndTime = currStartTime + activitie.duration * 30 * 60 * 1000
         for (let i = 0; i < activities.length; i++) {
             const act = activities[i]
+            const checkedStartTime = act.at
+            const checkedEndTime = act.at + act.duration * 30 * 60 * 1000
             if (activitie.id && activitie.id === act.id) continue
 
-            if (((startTime > act.at) && (startTime < act.at + act.duration * 30 * 60 * 1000)) ||
-                ((endTime > act.at) && (endTime < act.at + act.duration * 30 * 60 * 1000))) {
+            if (
+                (((currStartTime > checkedStartTime) && (currStartTime < checkedEndTime)) ||
+                ((currEndTime > checkedStartTime) && (currEndTime < checkedEndTime))) ||
+                
+                ((checkedStartTime > currStartTime) && (checkedStartTime < currEndTime)) ||
+                ((checkedEndTime > currStartTime) && (checkedEndTime < currEndTime))
+
+                )
+                {
                 return true
             }
 
@@ -188,7 +198,9 @@ export class TripAssembly extends Component {
     getMinDestinations = () => {
         var { destinations } = this.props.trip
         const { actsToDisplay } = this.state
+        console.log("getMinDestinations -> actsToDisplay", actsToDisplay)
         destinations = this.destsWithActs(destinations, actsToDisplay)
+        console.log("getMinDestinations -> destinations", destinations)
 
         let lastEndDate;
         let freeDaysLeft = 14
@@ -280,16 +292,16 @@ export class TripAssembly extends Component {
         return (
             <div className="assembly-container">
                 <section className="paging-assembly">
-                    <div onClick={()=>this.onTogglePage('prev')}>{'<'}</div>
+                    <div className="toggle-page" onClick={()=>this.onTogglePage('prev')}>{'<'}</div>
                     <span>{this.state.page + 1}</span>
-                    <div onClick={()=>this.onTogglePage('next')}>{'>'}</div>
+                    <div className="toggle-page" onClick={()=>this.onTogglePage('next')}>{'>'}</div>
                 </section>
                 <DestinationsHeader destinations={minDestinations} />
                 <div className={'trip-assembly-main full'}>
                     <DayTimeLine />
                     {acts}
                 </div >
-                <button className='editActivity' onClick={() => this.props.showModal('editActivity', { saveAct: this.saveAct, isOccTimeSlot: this.isOccTimeSlot, act: null, destinations: this.props.trip.destinations })}>add activity</button>
+                <button className='editActivity styled-button' onClick={() => this.props.showModal('editActivity', { saveAct: this.saveAct, isOccTimeSlot: this.isOccTimeSlot, act: null, destinations: this.props.trip.destinations })}>add activity</button>
             </div>
         )
     }

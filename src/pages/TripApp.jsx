@@ -17,7 +17,8 @@ class _TripApp extends Component {
 
     state = {
         trip: '',
-        chatOpen:false
+        chatOpen:false,
+        settingsOpen:false
     }
 
     async componentDidMount() {
@@ -102,6 +103,9 @@ class _TripApp extends Component {
     toggleChat=()=>{
         this.setState({chatOpen:!this.state.chatOpen})
     }
+    toggleSettings=()=>{
+        this.setState({settingsOpen:!this.state.settingsOpen})
+    }
 
     render() {
         const { trip } = this.state
@@ -111,11 +115,11 @@ class _TripApp extends Component {
                 <Switch>
                     <Route path="/trip/:id/triproute">
                         <img className="trip-main-img full" src={this.state.trip.imgUrl}></img>
-                        <TripNavBar tripId={trip._id} />
+                        <TripNavBar tripId={trip._id} settingsOpen={this.state.settingsOpen} toggleSettings={this.toggleSettings} />
                         <TripRoute trip={trip} changeOrder={this.changeOrder}></TripRoute>
                     </Route>
                     <Route path="/trip/:id/tripassembly">
-                        <TripNavBar tripId={trip._id} />
+                        <TripNavBar tripId={trip._id}  settingsOpen={this.state.settingsOpen} toggleSettings={this.toggleSettings}/>
                         <TripAssembly trip={trip} updateTripAct={this.updateTripAct} showModal={this.props.showModal} closeModal={this.props.closeModal}></TripAssembly>
                     </Route>
                 </Switch>

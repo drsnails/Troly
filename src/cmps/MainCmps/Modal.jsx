@@ -65,8 +65,8 @@ class _Modal extends React.Component {
         // console.log(this.state.dynamicCmp);
         return (
             <div className={`modal-screen flex align-center justify-center ${this.props.modal.isShown ? '' : 'hide'}`} onKeyDown={this.checkKey} onMouseDown={this.closeModal}>
-                <div className={`modal-container`} onMouseDown={(ev) => ev.stopPropagation()} >
-                    <div className="modal-header flex align-center justify-center" ><p>{this.state.nameToDisplay}</p><button onClick={this.closeModal}>X</button></div>
+                <div className={`modal-container `} onMouseDown={(ev) => ev.stopPropagation()} >
+                    <div className="modal-header flex align-center justify-center styled-header" ><p>{this.state.nameToDisplay}</p><button onClick={this.closeModal}>X</button></div>
                     <div className="modal-content"  >
 
                         {this.state.dynamicCmp}

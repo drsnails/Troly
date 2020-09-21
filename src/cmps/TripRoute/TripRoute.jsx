@@ -15,12 +15,12 @@ export function TripRoute({ trip,changeOrder }) {
     console.log(trip);
 
     return (
-        <div className="trip-route flex">
+        <div className="trip-route flex justify-center align-center">
             <RouteTimeLine trip={trip} changeOrder={changeOrder} />
-            <div className="route-right flex column ">
+
                 <MapContainer markers={getMarkers()} />
                 <RouteCalendar trip={trip} />
-            </div>
+           
             {/* <img className="hot-balloon" src="https://res.cloudinary.com/roidinary/image/upload/v1600627563/Asset4_qt7ydl.png"></img> */}
 
 

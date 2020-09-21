@@ -50,7 +50,7 @@ class _Chat extends Component {
         console.log(this.state);
         return (
             <div className={`chat-container flex column  ${this.props.chatOpen ? 'open' : ''}`}>
-                <div className="chat-header">
+                <div className="chat-header styled-header">
                     {this.props.trip.destinations[0].name} Chat
                 </div>
 
@@ -64,17 +64,16 @@ class _Chat extends Component {
                     ))}
                 </ul>
 
-                <form className="chat-send flex column" onSubmit={this.sendMsg}>
-                    <textarea
+                <form className="chat-send flex align-center" onSubmit={this.sendMsg}>
+                    <input
                         type="text"
                         value={this.state.msg.txt}
                         onChange={this.msgHandleChange}
                         name="txt"
-                        onKeyDown={(ev)=>{
-                            if(ev.key==='Enter') this.sendMsg(ev)
-                        }}
+                        placeholder="New message"
+
                     />
-                    <button className="styled-button">Send</button>
+                    <button><i class="far fa-paper-plane"></i></button>
                 </form>
 
             </div>
