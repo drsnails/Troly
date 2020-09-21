@@ -6,15 +6,41 @@
         width: 100%;
     }
     .trip-navbar{
-        padding: 20px;
         position: sticky;
         margin-bottom: 50px;
-        box-shadow: 0 1px 10px 0px;
-
+        // box-shadow: 0 7px 5px 0px rgba($color:$clr6, $alpha: 0.3);
+        a{
+            height:55px;
+            display: flex;
+            align-items: center;
+        }
+        >a{
+            margin-right: 20px;
+        }
         .trip-routes{
             flex:1;
             >a{
                 margin-inline-start: 30px;
+                padding: 20px;
+                &.active{
+                    background-color: $clr11;
+                    box-shadow: inset 0px -1px 7px -4px darken($clr11, 68%), inset  0px 4px 5px lighten($clr11, 6%);
+                }
+            }
+        }
+        .trip-settings{
+            position: absolute;
+            right: 0;
+            top: 60px;
+            background-color: $clr6;
+            height: 0;
+            width: 150px;
+            opacity: 0;
+            transition: height 0.3s,opacity 0.3s;
+            &.open{
+                opacity: 1;
+                height: 150px;
+
             }
         }
     }
@@ -39,18 +65,31 @@
             width: 350px;
         }
         .chat-header{
-            padding: 10px;
+            padding: 20px;
             text-align: center;
-            background-color: $clr10;
+            // background-color: $clr6;
             border-bottom: 1px solid $clr11;
-            border-top-right-radius: 50px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
         }
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: rgba(255, 255, 255, 0);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background: $clr6;
+            }
         .chat-history{
             flex: 1;
             padding: 5%;
-            background-color: $clr10;
+            background-color: whitesmoke;
             overflow-y: scroll;
-            border-bottom: 1px solid $clr11;;
+            border-bottom: 1px solid $clr11;
+            
             .message-data{
                 margin-bottom: 15px;
             }
@@ -79,17 +118,22 @@
             }
         }
         .chat-send{
-            padding: 5%;
-            background-color: $clr10;
-            border-bottom-left-radius: 50px;
-            textarea{
-                height: 75px;
-                border-radius: 2px;
+            background-color: $clr6;
+            input{
+                height: 50px;
                 border: none;
+                flex:1;
+                background-color: transparent;
+                padding-left: 20px;
+                ::placeholder{
+                    padding-left: 20px;
+                }
             }
-            button{
-                width: 100px;
-                align-self: flex-end;
+            :last-child{
+                margin-right: 10px;
+                padding: 0;
+                background-color: transparent;
+                border: none;
             }
         }
     }

@@ -26,8 +26,7 @@
             width: 100%;
             position: relative;
             text-align: center;
-            background-color: $clr10;
-            border-radius: 5px;
+            padding: 20px;
             margin-bottom: 20px;
             p{
                 flex: 1;
@@ -36,6 +35,9 @@
                 border:none;
                 outline: none;
                 background-color: transparent;
+                position: absolute;
+                top: 37%;
+                right: 10px;
             }
 
         }

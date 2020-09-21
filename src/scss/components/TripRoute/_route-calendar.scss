@@ -1,6 +1,7 @@
 .route-calendar{
     border-collapse: collapse;
     text-align: center;
+    max-width: 500px;
    .table-header{
        background-color: $clr8;
       
@@ -11,6 +12,7 @@
     td,th{
         padding:15px;
         border-right:0.1px solid rgba(128, 128, 128, 0.5) ;
+        overflow-x: hidden
     }
     th:first-child{
         border-top-left-radius: 5px;
