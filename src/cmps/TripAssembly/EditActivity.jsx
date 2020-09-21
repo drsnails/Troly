@@ -118,7 +118,7 @@ export class EditActivity extends Component {
                 <textarea placeholder="notes" onChange={this.handleChange} name="notes" id="notes" value={this.state.activitie.notes} ></textarea>
                 <label htmlFor="price" id="price">Price</label>
                 <input type="number" placeholder="price" name="price" id="price" onChange={this.handleChange} placeholder="price" value={this.state.activitie.price}></input>
-                <button onClick={this.onSaveAct}>Save</button>
+                <button className="styled-button" onClick={this.onSaveAct}>Save</button>
             </form>
         )
     }

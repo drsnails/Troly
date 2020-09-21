@@ -12,12 +12,12 @@ export function ActivitiePreview({ act, getRowIdx, onRemoveAct, onEdit }) {
 
     return (
         <div className={`activitie-prev-assembly ${activitieClass} ${isDayHeadClass} ${isFirstCol}`} style={{ gridRow: `${rowIdx || 'auto'}/span ${act.duration}` }} key={utils.makeId()}>
+            {act.duration && <h2>{act.name}</h2>}
             {act.date || ''}
             <p>{act.at && `${startTime}-${endTime}`}</p>
             <p>{act.destination}</p>
-            <p>{act.name}</p>
-            {act.name && <button onClick={()=>{onEdit(act)}} className="edit-activitie">edit</button>}
-            {act.name && <button onClick={()=>{onRemoveAct(act.id)}} className="delete-activitie">X</button>}
+            {act.name && <button onClick={()=>{onEdit(act)}} className="edit-activitie styled-button">edit</button>}
+            {act.name && <button onClick={()=>{onRemoveAct(act.id)}} className="delete-activitie styled-button">X</button>}
         </div>
     )
 }
