@@ -6,7 +6,7 @@
     h2{
         color:cornflowerblue
     }
-    h2,p{
+    >h2,>p{
         margin: 10px auto;    }
 }
 .addreview-container{
@@ -48,14 +48,15 @@ background-color: #8da5e2;
         width: 100%;
         border-bottom: 1px solid rgb(226, 225, 225);
         padding: 20px;
-        font-size: 0.9rem;
+        font-size: 1rem;
         color: rgb(99, 96, 96);
 
         
 
         > p{
-            text-align-last: auto;
-            color: rgb(163, 161, 161);
+            margin: 0;
+            text-align-last: left;
+            color: rgb(95, 93, 93);
             line-height: 1.3rem;
             overflow-wrap: anywhere;
 
@@ -65,6 +66,9 @@ background-color: #8da5e2;
         width: 100%;
         align-items: baseline;
         img{
+            :nth-child(5){
+                flex: 1;
+            }
             height:25px;
             width: 25px;
             margin: 2px
