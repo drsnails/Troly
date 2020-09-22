@@ -43,20 +43,8 @@ class _TripPreview extends Component {
                     <h3>{trip.destinations[0].name}</h3>
                     <p>{days} days</p>
                     <p>Price:  ${price}</p>
+                    <img className="rating-star" src="https://res.cloudinary.com/idanrozen/image/upload/v1600689776/450716_preview_uyyiz1.png" alt="" /> 
                 </div>
-
-
-                {addClass === 'detals' &&
-                    <div>
-                        < div className="img-wraper" >
-                            <img src={img} alt="" />
-
-                        </div>
-                        <p>{days} days to <h3>{trip.destinations[0].name}</h3></p>
-                    </div>}
-
-
-
             </div >
         )
     }

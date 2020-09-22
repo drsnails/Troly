@@ -64,7 +64,7 @@ background-color: #8da5e2;
         .review-details{
         width: 100%;
         align-items: baseline;
-        img{
+        .rating-star{
             :nth-child(5){
                 flex: 1;
             }

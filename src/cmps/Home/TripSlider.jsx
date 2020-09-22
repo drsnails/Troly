@@ -27,26 +27,28 @@ export function TripSlider({ trips }) {
 
     return (
         <Swiper
-            spaceBetween={20}
-            effect="fade"
-            slidesPerView={1}
+            // spaceBetween={0}
+            effect="coverflow"
+            slidesPerView={"auto"}
+            // allowSlidePrev
+            effectCoverflow={true}
             navigation
-            rotate={50}
+            rotate={-20}
             stretch={0}
-            depth={100}
-            modifier={1}
+            depth={500}
+            modifier={5}
             centeredSlides={ true}
             autoplay={true}
             delay={2500}
 
-        // pagination={{ clickable: true }}
+        pagination={{ clickable: true }}
         >
 
 
             {
                 trips.map((i, el) => {
                     return <SwiperSlide key={utils.makeId()}>
-                        <TripList trips={i} addClass={'slider'} />
+                        <TripPreview trip={i}  key={i._id} addClass={'slider'} img={utils.getRandomPic()}/> 
                     </SwiperSlide>;
                 })
             }

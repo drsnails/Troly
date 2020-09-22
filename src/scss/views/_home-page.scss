@@ -1,6 +1,9 @@
 .home-page{
-    h2{text-align: center;
-    margin: 0 auto 30px};
+    h2{
+        font-family: Dosis;
+        text-transform: uppercase;
+        text-align: center;
+         margin: 0 auto 30px};
 
 .trips-pagination{
     cursor: pointer;
@@ -21,16 +24,14 @@
 
 
 .home-page-hero{
-    height: 500px;
-    background: url('https://nuwallpaperhd.info/wp-content/uploads/2018/01/Best-Beautiful-Maldives-Wallpaper.jpg');
+    height: 718px;
+    background: url(https://cdn.hipwallpaper.com/i/14/16/mQRH5A.jpg);
     object-fit: cover;
     background-repeat: no-repeat;
     background-attachment: scroll;
-    background-position: center left;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background-position-x: -214px;
+    background-position-y: -69px;
+    background-position: cente;
     margin-bottom: 30px;
 }
 
@@ -39,54 +40,78 @@ margin-top: 250px;
 }
 
 .slideShow{
-    height: 550px;;
-    width: 600px;
-    position: absolute;
+    height: 550px;
+    width: 100%;
     right: 5%;
     top: 140px;
     margin-bottom:20px ;
 }
 
 .swiper-container {
+    align-items: center;
     width: 100%;
-    height: 100%;
+      padding-top: 10px;
+      padding-bottom: 50px;
+
 }
 .swiper-slide{
-    height: 100%;
-    width: 100%;
-    color: white;
-    padding: 10px;
+    width: 350px !important;
     margin: 0;
     background: transparent;
     background-position: center;
     background-size: cover;
+    height: 450px;
+
+    
+    .swiper-slide-prev{
+        transform: translate3d(0px, 0px, -100px) rotateX(0deg) rotateY(150deg) scale(0.9);
+    }
 }
+
+.swiper-slide-next{
+    transform: translate3d(0px, 0px, -99px) rotateX(-0.1deg) rotateY(34deg) scale(0.9)
+}
+
+
 
 .swiper-button-prev::after, .swiper-button-next::after{
     color: rgb(238, 239, 255);
-    font-weight: bold;
     font-size: 1.5rem;
     padding: 10px;
     border-radius: 100px;
 }
 
 .description-section{
-    font-family: ElMessiri;
+    font-family: Patua;
     border-radius: 10px;
     position: absolute;
-    width: 800px;
-    padding:0;
-    line-height:rem(40px);
-    top: 360px;
-    // background: linear-gradient(-182deg, #ffffff1c, #5c585814);
-    letter-spacing: 1px;
-    font-style: italic;
-    margin: 0 60px;
-    text-overflow: clip;
+    width: 577px;
+    padding: 0;
+    line-height: 5.4rem;
+    top: 253px;
+    letter-spacing: 1.9px;
+    margin: 0 30px;
     color: white;
+    
+    .styled-button{
+        box-shadow: none;
+        margin: 0 auto;
+        width: 150px;
+        padding: 10px;
+        
+        transition: all 0.3s;
+         &:hover{
+            font-size: 18px;
+            box-shadow: none;
+            width: 223px;
+            opacity: 1;
+            padding: 20px;
+         }
+    }
     h3{
-        font-size: rem(45px);
-        margin-bottom: 70px;
+        margin: 0;
+        font-size: 2.8125rem;
+        text-shadow: 0px 1px #00000066;
 
     }
     p{

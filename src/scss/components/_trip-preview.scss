@@ -29,6 +29,10 @@
     overflow: hidden;
     box-shadow: 1px 4px 7px 1px #00000036;
     letter-spacing: 1.3px;
+    .rating-star{
+        height:20px;
+        width: 20px;
+    }
 
     .trip-preview-details{
         background-color: white;
@@ -43,16 +47,17 @@
         
         *{
             margin-bottom: 10px;
-        }
+        }  
     }
 
     &.slider{
         height: 100%;
-        // box-shadow: 3px 3px 9px 3px #746d6d61, -1px -3px 14px 0px #0000001a !important;
+        width: 100%;
+        // box-shadow: 3px 3px 9px 3px #746d6d61, -1px -3px 14px 0px #0000001a ;
         border-radius: 5px;
 
         .img-wraper{
-            height: 400px;
+            height: 300px;
             
         }
 
@@ -93,6 +98,9 @@
     
         }
     }
+
+
+
 
     @include for-mobile-layout {
        border: none;
